@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Octaform Validate</title>
+</head>
+<body>
+  <form class="container">
+    <div class="row">
+      <label class="col-12">
+        <h4>Octaform Validate</h4>
+      </label>
+
+      <label class="col-6">
+        <strong>First name:</strong>
+        <input 
+          type="text"
+          required
+          validate="string"
+        />
+      </label>
+
+      <label class="col-6">
+        <strong>Last name:</strong>
+        <input type="text" />
+      </label>
+    </div>
+
+    <div class="row">
+      <label class="col-12">
+        <strong>Country:</strong>
+        <select>
+          <option value="">Select an option</option>
+          <option value="BR">Brazil</option>
+          <option value="UA">Ukraine</option>
+          <option value="US">United States</option>
+        </select>
+      </label>
+
+      <div class="col-6">
+        <strong>Choose Your Favorite</strong>
+        <input type="radio" name="pokemon" value="Red" id="pokemonRed">
+        <label for="pokemonRed">Red</label>
+        <input type="radio" name="pokemon" value="Blue" id="pokemonBlue">
+        <label for="pokemonBlue">Blue</label>
+      </div>
+      
+      <div class="col-6">
+        <strong>Check These Out</strong>
+        <input id="checkbox1" type="checkbox">
+        <label for="checkbox1">Checkbox 1</label>
+        <input id="checkbox2" type="checkbox">
+        <label for="checkbox2">Checkbox 2</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <label>
+          <strong>Textarea Label</strong>
+          <textarea></textarea>
+        </label>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-12 right">
+        <br />
+        <button class="button-primary">Validate</button>
+      </div>
+    </div>
+  </form>
+</body>
+</html>

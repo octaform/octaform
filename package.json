@@ -1,0 +1,43 @@
+{
+  "name": "octaform-validate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run server",
+    "watch": "webpack --watch",
+    "server": "node_modules/.bin/webpack-dev-server",
+    "webpack": "node_modules/.bin/webpack",
+    "production": "npm run clean && npm run webpack -p",
+    "build": "npm run clean && npm run webpack",
+    "clean": "rimraf dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisgfortes/octaform-validate.git"
+  },
+  "author": "Christian Fortes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrisgfortes/octaform-validate/issues"
+  },
+  "homepage": "https://github.com/chrisgfortes/octaform-validate#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "copy-webpack-plugin": "^4.4.2",
+    "css-loader": "^0.28.10",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.7.2",
+    "rimraf": "^2.6.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.20.2",
+    "webpack": "^3.11.0",
+    "webpack-cli": "^2.0.9",
+    "webpack-dev-server": "^3.0.0"
+  }
+}
