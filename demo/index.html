@@ -18,7 +18,7 @@
         <input 
           type="text"
           required
-          validate="string"
+          octaform="string"
         />
       </label>
 
@@ -29,37 +29,47 @@
     </div>
 
     <div class="row">
-      <label class="col-12">
+      <label class="col-7">
+        <strong>Email:</strong>
+        <input type="email" name="email"/>
+      </label>
+
+      <label class="col-5">
         <strong>Country:</strong>
         <select>
-          <option value="">Select an option</option>
+          <option value="">Select a country</option>
           <option value="BR">Brazil</option>
           <option value="UA">Ukraine</option>
           <option value="US">United States</option>
         </select>
       </label>
 
+      <label class="col-12">
+        <strong>Upload your CV:</strong>
+        <input name="myFile" type="file" />
+      </label>
+
       <div class="col-6">
-        <strong>Choose Your Favorite</strong>
-        <input type="radio" name="pokemon" value="Red" id="pokemonRed">
-        <label for="pokemonRed">Red</label>
-        <input type="radio" name="pokemon" value="Blue" id="pokemonBlue">
-        <label for="pokemonBlue">Blue</label>
+        <strong>Gender:</strong>
+        <input type="radio" name="pokemon" value="male" id="genderMale">
+        <label for="genderMale">Male</label>
+        <input type="radio" name="pokemon" value="female" id="genderFemale">
+        <label for="genderFemale">Female</label>
       </div>
       
       <div class="col-6">
-        <strong>Check These Out</strong>
+        <strong>Do you have a portfolio:</strong>
         <input id="checkbox1" type="checkbox">
-        <label for="checkbox1">Checkbox 1</label>
+        <label for="checkbox1">Yes</label>
         <input id="checkbox2" type="checkbox">
-        <label for="checkbox2">Checkbox 2</label>
+        <label for="checkbox2">No</label>
       </div>
     </div>
 
     <div class="row">
       <div class="col-12">
         <label>
-          <strong>Textarea Label</strong>
+          <strong>Resume:</strong>
           <textarea></textarea>
         </label>
       </div>

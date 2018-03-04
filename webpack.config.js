@@ -18,6 +18,12 @@ module.exports = {
   },
   module: {
     rules: [{
+      test: /\.scss$/,
+      use: ExtractTextPlugin.extract([
+        'css-loader', 
+        'sass-loader'
+      ])
+    }, {
       test: /\.css$/,
       use: [
         'style-loader', 

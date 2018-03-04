@@ -1,0 +1,32 @@
+@mixin inputTextTypes() {
+  input{
+    &[type="email"],
+    &[type="number"],
+    &[type="search"],
+    &[type="text"],
+    &[type="tel"],
+    &[type="url"],
+    &[type="password"] {
+      @content;
+    }
+  }
+}
+
+@mixin inputButtonTypes(){
+  input{
+    &[type="submit"],
+    &[type="reset"],
+    &[type="button"]{
+      @content;
+    }
+  }
+}
+
+@mixin inputOptionTypes{
+  input{
+    &[type="checkbox"],
+    &[type="radio"] {
+      @content;
+    }
+  }
+}

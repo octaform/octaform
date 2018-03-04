@@ -1,8 +1,8 @@
 {
   "name": "octaform-validate",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Octaform Validate is a library that helps developers to validate data forms in an easy way, being completely agnostic any framework.",
+  "main": "src/index.js",
   "scripts": {
     "start": "npm run server",
     "watch": "webpack --watch",
@@ -18,7 +18,7 @@
     "url": "git+https://github.com/chrisgfortes/octaform-validate.git"
   },
   "author": "Christian Fortes",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/chrisgfortes/octaform-validate/issues"
   },
