@@ -1,5 +1,7 @@
+@import '../variables';
+
 %inputFocusStyle {
-  border: 1px solid #33C3F0;
+  border: 1px solid $colorBlue;
   outline: 0;
 }
 
@@ -44,8 +46,8 @@
 
 %btnStyle {
   color: #FFF;
-  background-color: #33C3F0;
-  border-color: #33C3F0;
+  background-color: $colorBlue;
+  border-color: $colorBlue;
 }
 
 %btnHoverFocusStyle {
@@ -58,4 +60,13 @@
   color: #333;
   border-color: #888;
   outline: 0;
+}
+
+%centerElement{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
