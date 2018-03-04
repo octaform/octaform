@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Octaform Validate</title>
+  <title>Octa Validate</title>
 </head>
 <body>
   <form class="container">
     <div class="row">
       <label class="col-12">
-        <h4>Octaform Validate</h4>
+        <h4>Octa Validate</h4>
       </label>
 
       <label class="col-6">
@@ -18,7 +18,12 @@
         <input 
           type="text"
           required
-          octaform="string"
+          octa="string"
+          octa-validate="string"
+          octa-message="{
+            string: 'Voce precisa digitar string', 
+            required: 'Campo obrigatorio'
+          }"
         />
       </label>
 
