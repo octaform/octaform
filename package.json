@@ -1,7 +1,7 @@
 {
-  "name": "octa-validate",
+  "name": "octaform-validate",
   "version": "1.0.0",
-  "description": "Octa Validate is a library that helps developers to validate data forms in an easy way, being completely agnostic any framework.",
+  "description": "Octaform Validate is a library that helps developers to validate data forms in an easy way, being completely agnostic any framework.",
   "main": "src/index.js",
   "scripts": {
     "start": "npm run server",
@@ -15,14 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chrisgfortes/octa-validate.git"
+    "url": "git+https://github.com/chrisgfortes/octaform-validate.git"
   },
   "author": "Christian Fortes",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chrisgfortes/octa-validate/issues"
+    "url": "https://github.com/chrisgfortes/octaform-validate/issues"
   },
-  "homepage": "https://github.com/chrisgfortes/octa-validate#readme",
+  "homepage": "https://github.com/chrisgfortes/octaform-validate#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
