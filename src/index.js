@@ -1,1 +1,2 @@
-console.log('Oiiiii');
+const teste = () => 'sfjkhsjkdfh';
+teste();
