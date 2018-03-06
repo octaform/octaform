@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
 const VENDORS = [];
 
@@ -54,6 +55,10 @@ module.exports = {
         'vendor',
         'manifest',
       ],
+    }),
+    new CircularDependencyPlugin({
+      exclude: /node_modules/,
+      failOnError: false,
     }),
   ],
 };
