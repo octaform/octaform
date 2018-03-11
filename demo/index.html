@@ -7,7 +7,7 @@
   <title>Octaform Validate</title>
 </head>
 <body>
-  <form class="container">
+  <form class="container" id="form">
     <div class="row">
       <div class="col-12">
         <h4>Octaform Validate</h4>
@@ -15,24 +15,37 @@
 
       <label class="col-6">
         <strong>First name:</strong>
-        <input type="text" />
+        <input 
+          type="text" 
+          name="firstName"
+          oc-validate="[required, min:3]"
+          autocomplete='given-name'
+        />
       </label>
 
       <label class="col-6">
         <strong>Last name:</strong>
-        <input type="text" />
+        <input 
+          type="text"
+          name="lastName",
+          autocomplete='family-name'
+        />
       </label>
     </div>
 
     <div class="row">
       <label class="col-7">
         <strong>Email:</strong>
-        <input type="email" name="email"/>
+        <input 
+          type="email" 
+          name="email" 
+          autocomplete='email'
+        />
       </label>
 
       <label class="col-5">
         <strong>Country:</strong>
-        <select>
+        <select name="country" autocomplete='country-name'>
           <option value="">Select a country</option>
           <option value="BR">Brazil</option>
           <option value="UA">Ukraine</option>
@@ -42,23 +55,45 @@
 
       <label class="col-12">
         <strong>Upload your CV:</strong>
-        <input name="myFile" type="file" />
+        <input 
+          name="file" 
+          type="file" 
+        />
       </label>
 
       <div class="col-6">
         <strong>Gender:</strong>
-        <input type="radio" name="pokemon" value="male" id="genderMale">
+        <input type="radio" name="gender" value="male" id="genderMale">
         <label for="genderMale">Male</label>
-        <input type="radio" name="pokemon" value="female" id="genderFemale">
+        <input type="radio" name="gender" value="female" id="genderFemale">
         <label for="genderFemale">Female</label>
       </div>
       
       <div class="col-6">
         <strong>Do you have a portfolio:</strong>
-        <input id="checkbox1" type="checkbox">
-        <label for="checkbox1">Yes</label>
-        <input id="checkbox2" type="checkbox">
-        <label for="checkbox2">No</label>
+        <label class="checkbox">
+          <input 
+            name="checkbox[]" 
+            type="checkbox" 
+            value="yes">
+          <span>Yes</span>
+        </label>
+
+        <label class="checkbox">
+          <input 
+            name="checkbox[]" 
+            type="checkbox" 
+            value="no">
+          <span>No</span>
+        </label>
+        
+        <label class="checkbox">
+          <input 
+            name="checkbox[]" 
+            type="checkbox" 
+            value="maybe">
+          <span>Maybe</span>
+        </label>
       </div>
     </div>
 
@@ -66,7 +101,7 @@
       <div class="col-12">
         <label>
           <strong>Resume:</strong>
-          <textarea></textarea>
+          <textarea name="resume"></textarea>
         </label>
       </div>
     </div>
@@ -74,7 +109,10 @@
     <div class="row">
       <div class="col-12 right">
         <br />
-        <button class="button-primary">Validate</button>
+        <button 
+          class="button-primary" 
+          type="submit"
+        >Validate</button>
       </div>
     </div>
   </form>
