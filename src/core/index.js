@@ -33,7 +33,7 @@ class Octaform {
           value,
         };
         
-        const validation = Rules(field);
+        const validation = Rules.apply(field);
         if (validation.messages.length) this.messages.push(validation);
       });
 

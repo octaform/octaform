@@ -1,27 +1,30 @@
 import validations from '../validations';
 
-const Rules = (objField) => {
-  const errors = {
-    field: objField.selector,
-    messages: [],
-  };
+const Rules = {
+  apply(objField) {
+    const errors = {
+      field: objField.selector,
+      messages: [],
+    };
 
-  const objFieldMap = Object.entries(objField.rules || {});
+    Object
+      .entries(objField.rules || {})
+      .forEach(([ruleKey, ruleValue]) => {
+        const fnValidate = validations[ruleKey];
+        if (fnValidate) {
+          const result = fnValidate(objField.value, objField.element, ruleValue);
 
-  objFieldMap.forEach((rule) => {
-    const fn = validations[rule[0]];
-    if (fn) {
-      const result = fn(objField.value, rule[1], objField.element);
-      
-      if (!result) {
-        errors.messages.push(objField.messages[rule[0]]);
-      }
-    } else {
-      throw new ReferenceError(`${rule[0]} is not defined`);
-    }
-  }); 
-  
-  return errors;
+          if (!result) {
+            const message = objField.messages[ruleKey];
+            errors.messages.push(message);
+          }
+        } else {
+          throw new ReferenceError(`${ruleKey} is not defined`);
+        }
+      });
+
+    return errors;
+  },
 };
 
 export default Rules;
