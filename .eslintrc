@@ -1,5 +1,16 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb-base",
-  "rules": {}
+  "rules": {
+    "no-console": 0,
+    "class-methods-use-this": 0,
+    "ignoreComments": true,
+    "no-unused-vars": 1,
+    "no-trailing-spaces": 0
+  },
+  "globals": {
+    "document": true,
+    "window": true,
+    "console": true
+  }
 }

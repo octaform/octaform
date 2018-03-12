@@ -204,6 +204,16 @@ input {
   }
 }
 
+.checkbox{
+  display: inline-block;
+  margin-right: 0.9rem;
+
+  span{
+    margin-left: 0.2rem;
+    vertical-align: middle;
+  }
+}
+
 select{
   margin: 0;
 }

@@ -1,2 +1,3 @@
-const teste = () => 'sfjkhsjkdfh';
-teste();
+import Octaform from './core';
+
+export default Octaform;

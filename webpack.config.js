@@ -45,6 +45,13 @@ module.exports = {
       },
     }],
   },
+  devServer: {
+    contentBase: './src',
+  },
+  externals: {
+    window: 'window',
+    document: 'document',
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './demo/index.html',
@@ -60,5 +67,6 @@ module.exports = {
       exclude: /node_modules/,
       failOnError: false,
     }),
+    new webpack.ProvidePlugin({}),
   ],
 };
