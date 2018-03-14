@@ -1,3 +1,6 @@
 import Octaform from './core';
 
-export default Octaform;
+const init = new Octaform();
+
+window.Octaform = init;
+export default init;

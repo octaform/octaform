@@ -6,11 +6,14 @@
     "class-methods-use-this": 0,
     "ignoreComments": true,
     "no-unused-vars": 1,
-    "no-trailing-spaces": 0
+    "no-trailing-spaces": 0,
+    "import/prefer-default-export": 0,
+    "arrow-body-style": 0,
   },
   "globals": {
     "document": true,
     "window": true,
-    "console": true
+    "console": true,
+    "_": true
   }
 }

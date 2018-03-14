@@ -1,5 +1,8 @@
 import './scss/styles.scss';
 import Octaform from '../src';
+import './validations/email.validate';
+import './validations/required.validate';
+import './validations/minlength.validate';
 
 const fieldMap = {
   firstName: {
@@ -10,7 +13,7 @@ const fieldMap = {
     },
     messages: { // Se não estar ele pega do default das configs
       required: 'First Name is required',
-      minlength: 'At least you should type 3 letters',
+      minlength: 'At least you should type #{minlength} letters',
     },
   },
   lastName: {
@@ -20,6 +23,12 @@ const fieldMap = {
     },
     messages: { // Se não estar ele pega do default das configs
       required: 'Last Name is required',
+    },
+  },
+  email: {
+    rules: {
+      required: true,
+      email: true,
     },
   },
 };

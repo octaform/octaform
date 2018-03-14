@@ -1,24 +1,26 @@
-// import Config from './config';
 import Rules from './rules';
+import validation from './validation';
+import { $ } from '../helpers';
 
 class Octaform {
   constructor() {
+    this.validation = validation;
     this.validateAll = this.validateAll.bind(this);
-    this.messages = [];
+    this.messages = {};
   }
 
   validateAll(fieldMap = {}) {
-    this.messages = [];
+    const errors = [];
 
     Object.keys(fieldMap)
       .forEach((selector) => {
         const self = fieldMap[selector];
+        const element = $(selector);
 
-        const element = (
-          document.getElementsByName(selector) ||
-          document.getElementsByClassName(selector) ||
-          document.getElementById(selector)
-        ) || '';
+        const messages = Object.assign(
+          this.messages,
+          (self.messages || {}),
+        );
 
         const value = (
           self.value ||
@@ -27,22 +29,18 @@ class Octaform {
 
         const field = {
           rules: (self.rules || {}),
-          messages: (self.messages || {}),
+          messages: (messages || {}),
           selector,
           element,
           value,
         };
         
-        const validation = Rules.apply(field);
-        if (validation.messages.length) this.messages.push(validation);
+        const valid = Rules.apply(field, this.validation);
+        if (valid.messages.length) errors.push(valid);
       });
 
-    return (
-      this.messages
-    );
+    return errors;
   }
 }
 
-export default (window.Octaform) = (
-  new Octaform()
-);
+export default Octaform;
