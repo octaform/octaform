@@ -1,22 +1,28 @@
+import Messages from './messages';
+
 export default (objField, validations) => {
   const errors = {
     field: objField.selector,
     messages: [],
   };
-
+  
   Object
     .entries(objField.rules || {})
-    .forEach(([ruleKey, ruleValue]) => {
+    .forEach(([ruleKey, params]) => {
       const fnValidate = validations[ruleKey];
       if (fnValidate) {
         const result = fnValidate(
           objField.value,
           objField.element,
-          ruleValue,
+          params,
         );
 
         if (!result) {
-          const message = objField.messages[ruleKey];
+          const message = Messages.replace(
+            objField.messages[ruleKey],
+            params,
+          );
+          
           errors.messages.push(message);
         }
       } else {

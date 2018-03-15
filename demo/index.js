@@ -3,6 +3,7 @@ import Octaform from '../src';
 import './validations/email.validate';
 import './validations/required.validate';
 import './validations/minlength.validate';
+import './validations/teste.validate';
 
 const fieldMap = {
   firstName: {
@@ -10,10 +11,11 @@ const fieldMap = {
     rules: {
       required: true,
       minlength: 3,
+      array: ['(Valor)', '(Key)', '(Teste)'],
+      object: { key1: '[Valor 1]', key2: '[Valor 2]' },
     },
     messages: { // Se não estar ele pega do default das configs
       required: 'First Name is required',
-      minlength: 'At least you should type #{minlength} letters',
     },
   },
   lastName: {

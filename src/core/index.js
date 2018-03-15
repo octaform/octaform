@@ -1,12 +1,18 @@
 import Rules from './rules';
-import validation from './validation';
 import { $ } from '../helpers';
 
 class Octaform {
   constructor() {
-    this.validation = validation;
+    this.validator = {
+      add: this.addMethod,
+    };
+
     this.validateAll = this.validateAll.bind(this);
-    this.messages = {};
+  }
+
+  addMethod(name, fn, msg) {
+    Rules.messages.set(name, msg);
+    this[name] = fn;
   }
 
   validateAll(fieldMap = {}) {
@@ -17,10 +23,9 @@ class Octaform {
         const self = fieldMap[selector];
         const element = $(selector);
 
-        const messages = Object.assign(
-          this.messages,
-          (self.messages || {}),
-        );
+        Rules
+          .messages
+          .setDictionary(self.messages);
 
         const value = (
           self.value ||
@@ -29,13 +34,13 @@ class Octaform {
 
         const field = {
           rules: (self.rules || {}),
-          messages: (messages || {}),
+          messages: Rules.messages.getAll(),
           selector,
           element,
           value,
         };
-        
-        const valid = Rules.apply(field, this.validation);
+
+        const valid = Rules.apply(field, this.validator);
         if (valid.messages.length) errors.push(valid);
       });
 

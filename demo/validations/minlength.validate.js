@@ -1,5 +1,5 @@
 import Octaform from '../../src';
 
-Octaform.validation.add('minlength', (value, element, rule) => {
-  return (value.length >= rule);
-}, 'This field is required.');
+Octaform.validator.add('minlength', (value, element, param) => {
+  return (value.length >= param);
+}, 'Please enter at least {0} characters.');
