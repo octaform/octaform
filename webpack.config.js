@@ -3,17 +3,12 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
-const VENDORS = [
-  'lodash',
-];
 
 module.exports = {
   devtool: 'eval-source-map',
   entry: {
     demo: './demo/index.js',
     bundle: './src/index.js',
-    vendor: VENDORS,
   },
   output: {
     filename: '[name].[chunkhash].js',
@@ -61,8 +56,7 @@ module.exports = {
     new ExtractTextPlugin('styles.css'),
     new webpack.optimize.CommonsChunkPlugin({
       names: [
-        'vendor',
-        'manifest',
+        'bundle',
       ],
     }),
     new CircularDependencyPlugin({

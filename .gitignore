@@ -127,5 +127,6 @@ $RECYCLE.BIN/
 
 # Project
 build/
+dist/
 
 # End of https://www.gitignore.io/api/osx,node,linux,windows

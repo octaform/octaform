@@ -11,8 +11,15 @@ const fieldMap = {
     rules: {
       required: true,
       minlength: 3,
-      array: ['(Valor)', '(Key)', '(Teste)'],
-      object: { key1: '[Valor 1]', key2: '[Valor 2]' },
+      array: [
+        '(Array:0)', 
+        '(Array:1)', 
+        '(Array:2)',
+      ],
+      object: { 
+        key1: '(Key:0)', 
+        key2: '(Key:1)',
+      },
     },
     messages: { // Se não estar ele pega do default das configs
       required: 'First Name is required',

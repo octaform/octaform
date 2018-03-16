@@ -1,4 +1,6 @@
+import get from 'lodash/get';
 import { PATTERNS } from '../constants';
+import { isArray, isObject, isString, isNumber } from '../../helpers';
 
 export default {
   messages: {},
@@ -21,16 +23,16 @@ export default {
       return searchItems.reduce((acc, current) => {
         const pureKey = current.replace(PATTERNS.MESSAGE.BRACES, '');
 
-        if (_.isString(params) || _.isNumber(params)) {
+        if (isString(params) || isNumber(params)) {
           acc = msg.replace(current, params);
         }
 
-        if (_.isArray(params)){
+        if (isArray(params)){
           acc = acc.replace(current, params[pureKey]);
         }
 
-        if (_.isObject(params)){
-          const objValue = _.get(params, pureKey, current);
+        if (isObject(params)){
+          const objValue = get(params, pureKey, current);
           acc = acc.replace(current, objValue);
         }
 

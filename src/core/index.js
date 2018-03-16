@@ -23,6 +23,10 @@ class Octaform {
         const self = fieldMap[selector];
         const element = $(selector);
 
+        if (!element.length) {
+          throw new ReferenceError(`the ${selector} field wasn't found`);
+        }
+
         Rules
           .messages
           .setDictionary(self.messages);
