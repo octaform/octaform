@@ -6,4 +6,4 @@ Octaform.validator.add('array', () => {
 
 Octaform.validator.add('object', () => {
   return false;
-}, 'Object keys: {key1} || {key2} is required.');
+}, 'Object keys: {key1} || {key2.key3[0].key4} is required.');

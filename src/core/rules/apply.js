@@ -1,4 +1,4 @@
-import Messages from './messages';
+import { Replace } from '../actions';
 
 export default (objField, validations) => {
   const errors = {
@@ -18,7 +18,7 @@ export default (objField, validations) => {
         );
 
         if (!result) {
-          const message = Messages.replace(
+          const message = Replace.message.validation(
             objField.messages[ruleKey],
             params,
           );

@@ -1,18 +1,11 @@
 import Rules from './rules';
 import { $ } from '../helpers';
+import { Errors } from './actions';
 
 class Octaform {
   constructor() {
-    this.validator = {
-      add: this.addMethod,
-    };
-
+    this.validator = Rules.methods.getAll();
     this.validateAll = this.validateAll.bind(this);
-  }
-
-  addMethod(name, fn, msg) {
-    Rules.messages.set(name, msg);
-    this[name] = fn;
   }
 
   validateAll(fieldMap = {}) {
@@ -24,7 +17,7 @@ class Octaform {
         const element = $(selector);
 
         if (!element.length) {
-          throw new ReferenceError(`the ${selector} field wasn't found`);
+          Errors.reference('field', selector);
         }
 
         Rules

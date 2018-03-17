@@ -12,13 +12,17 @@ const fieldMap = {
       required: true,
       minlength: 3,
       array: [
-        '(Array:0)', 
-        '(Array:1)', 
+        '(Array:0)',
+        '(Array:1)',
         '(Array:2)',
       ],
       object: { 
         key1: '(Key:0)', 
-        key2: '(Key:1)',
+        key2: {
+          key3: [{
+            key4: '(key:4)',
+          }],
+        },
       },
     },
     messages: { // Se não estar ele pega do default das configs
