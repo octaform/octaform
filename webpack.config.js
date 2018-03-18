@@ -7,7 +7,7 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 module.exports = {
   devtool: 'eval-source-map',
   entry: {
-    demo: './demo/index.js',
+    demo: './demo/vanilla/index.js',
     bundle: './src/index.js',
   },
   output: {
@@ -51,7 +51,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './demo/index.html',
+      template: './demo/vanilla/index.html',
     }),
     new ExtractTextPlugin('styles.css'),
     new webpack.optimize.CommonsChunkPlugin({

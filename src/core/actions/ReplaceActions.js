@@ -1,7 +1,7 @@
 import { PATTERNS } from '../constants';
 import { isArray, isObject, isString, isNumber, get } from '../../helpers';
 
-export const Replace = {
+export const ReplaceActions = {
   message: {
     error(msg, ...args) {
       const params = msg.match(PATTERNS.MESSAGE.PARAMS) || [];

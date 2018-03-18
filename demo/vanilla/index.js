@@ -1,9 +1,9 @@
-import './scss/styles.scss';
-import Octaform from '../src';
-import './validations/email.validate';
-import './validations/required.validate';
-import './validations/minlength.validate';
-import './validations/teste.validate';
+import '../scss/styles.scss';
+import Octaform from '../../src';
+import '../validations/email.validate';
+import '../validations/required.validate';
+import '../validations/minlength.validate';
+import '../validations/teste.validate';
 
 const fieldMap = {
   firstName: {
@@ -30,12 +30,9 @@ const fieldMap = {
     },
   },
   lastName: {
-    // value: 'valor do field', // Not required,
     rules: {
       required: true,
-    },
-    messages: { // Se não estar ele pega do default das configs
-      required: 'Last Name is required',
+      minlength: 10,
     },
   },
   email: {
