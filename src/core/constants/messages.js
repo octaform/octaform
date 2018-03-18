@@ -1,4 +1,4 @@
-export const MESSAGES = {
+export default {
   CORE: {
     msg: '{method} has not been defined a validation message',
     field: 'field {selector} was not found',

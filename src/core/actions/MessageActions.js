@@ -1,17 +1,17 @@
 import State from '../states';
-import { MESSAGES } from '../constants';
+import MESSAGES from '../constants/messages';
 
-export const MessageActions = {
+const MessageActions = {
   getAll() {
     return State.messages;
   },
   set(name, msg) {
     State.messages[name] = msg;
   },
-  setDictionary(field, userMessages = {}) {
+  setDictionary(field, userMessages) {
     const fields = Object.assign(
       State.messages.fields,
-      { [field]: userMessages },
+      (userMessages && { [field]: userMessages }),
     );
 
     State.messages = Object.assign(
@@ -21,3 +21,5 @@ export const MessageActions = {
     );
   },
 };
+
+export default MessageActions;

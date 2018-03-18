@@ -1,2 +1,7 @@
-export * from './ApplyRules';
-export * from './ValidateRules';
+import ApplyRules from './ApplyRules';
+import ValidateRules from './ValidateRules';
+
+export {
+  ValidateRules,
+  ApplyRules,
+};

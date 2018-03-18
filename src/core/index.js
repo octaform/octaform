@@ -1,9 +1,9 @@
-import { ValidateRules } from './rules';
-import { MethodActions } from './actions';
+import ValidateRules from './rules/ValidateRules';
+import ValidateActions from './actions/ValidateActions';
 
 class Octaform {
   constructor() {
-    this.validator = MethodActions.getAll();
+    this.validator = ValidateActions.getAll();
     this.validateAll = ValidateRules;
   }
 }

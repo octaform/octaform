@@ -1,13 +1,16 @@
-import { ReplaceActions } from './ReplaceActions';
-import { MessageActions } from './MessageActions';
+import ReplaceActions from './ReplaceActions';
+import MessageActions from './MessageActions';
 
-export const ErrorActions = {
-  reference(type, ...args){
+const ErrorActions = {
+  set(type, ...args){
+    const messages = MessageActions.getAll();
     const error = ReplaceActions.message.error(
-      MessageActions.messages.core[type], 
+      messages.core[type],
       ...args,
     );
     
-    throw new ReferenceError(error);
+    throw new Error(error);
   },
 };
+
+export default ErrorActions;

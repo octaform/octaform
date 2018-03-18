@@ -1,8 +1,10 @@
+const ENV = (JSON.stringify(process.env.NODE_ENV || 'dev'));
 const path = require('path');
 const webpack = require('webpack');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CircularDependencyPlugin = require('circular-dependency-plugin');
+const Package = require('./package.json');
 
 module.exports = {
   devtool: 'eval-source-map',
@@ -42,12 +44,12 @@ module.exports = {
       },
     }],
   },
-  devServer: {
-    contentBase: './src',
-  },
   externals: {
     window: 'window',
     document: 'document',
+  },
+  devServer: {
+    contentBase: './src',
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -64,5 +66,9 @@ module.exports = {
       failOnError: false,
     }),
     new webpack.ProvidePlugin({}),
+    new webpack.DefinePlugin({
+      VERSION: JSON.stringify(Package.version),
+      'process.env.NODE_ENV': ENV,
+    }),
   ],
 };

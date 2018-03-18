@@ -8,7 +8,7 @@
     "watch": "webpack --watch",
     "server": "node_modules/.bin/webpack-dev-server",
     "webpack": "node_modules/.bin/webpack",
-    "production": "npm run clean && npm run webpack -p",
+    "production": "npm run clean && npm run webpack -p --progress",
     "build": "npm run clean && npm run webpack",
     "clean": "rimraf dist",
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,8 +1,8 @@
-import { ApplyRules } from '../rules/ApplyRules';
-import { $ } from '../../helpers';
-import { ErrorActions, MessageActions, MethodActions } from '../actions';
+import ApplyRules from './ApplyRules';
+import $ from '../../helpers/selectorHelper';
+import { ErrorActions, MessageActions, ValidateActions } from '../actions';
 
-export const ValidateRules = (fieldMap = {}) => {
+const ValidateRules = (fieldMap = {}) => {
   const errors = [];
 
   Object.keys(fieldMap)
@@ -10,12 +10,10 @@ export const ValidateRules = (fieldMap = {}) => {
       const self = fieldMap[selector];
       const element = $(selector);
 
-      if (!element.length) {
-        ErrorActions.reference('field', selector);
-      }
+      MessageActions.setDictionary(selector, self.messages);
 
-      if (Object.keys(self.messages || {}).length) {
-        MessageActions.setDictionary(selector, self.messages);
+      if (!element.length) {
+        ErrorActions.set('field', selector);
       }
 
       const value = (
@@ -31,9 +29,14 @@ export const ValidateRules = (fieldMap = {}) => {
         value,
       };
 
-      const valid = ApplyRules(field, MethodActions.getAll());
+      const valid = ApplyRules(field, ValidateActions.getAll());
       if (valid.messages.length) errors.push(valid);
     });
 
+  ValidateRules.isValid = !errors.length;
+
   return errors;
 };
+
+
+export default ValidateRules;

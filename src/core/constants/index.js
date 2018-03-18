@@ -1,2 +1,7 @@
-export * from './patterns';
-export * from './messages';
+import PATTERNS from './patterns';
+import MESSAGES from './messages';
+
+export {
+  PATTERNS,
+  MESSAGES,
+};

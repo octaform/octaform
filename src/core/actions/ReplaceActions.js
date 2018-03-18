@@ -1,10 +1,10 @@
-import { PATTERNS } from '../constants';
+import PATTERNS from '../constants/patterns';
 import { isArray, isObject, isString, isNumber, get } from '../../helpers';
 
-export const ReplaceActions = {
+const ReplaceActions = {
   message: {
-    error(msg, ...args) {
-      const params = msg.match(PATTERNS.MESSAGE.PARAMS) || [];
+    error(msg = '', ...args) {
+      const params = (msg.match(PATTERNS.MESSAGE.PARAMS) || []);
       return params.reduce((acc, current, index) => acc.replace(current, args[index]), msg);
     },
     validation(msg, params){
@@ -29,3 +29,4 @@ export const ReplaceActions = {
   },
 };
 
+export default ReplaceActions;

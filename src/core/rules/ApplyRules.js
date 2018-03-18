@@ -1,6 +1,6 @@
 import { ReplaceActions, ErrorActions } from '../actions';
 
-export const ApplyRules = (field = {}, validations = {}) => {
+const ApplyRules = (field = {}, validations = {}) => {
   const errors = {
     field: field.selector,
     messages: [],
@@ -28,9 +28,11 @@ export const ApplyRules = (field = {}, validations = {}) => {
           errors.messages.push(result);
         }
       } else {
-        ErrorActions.reference('undefined', key);
+        ErrorActions.set('undefined', key);
       }
     });
 
   return errors;
 };
+
+export default ApplyRules;

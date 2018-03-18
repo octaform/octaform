@@ -1,4 +1,4 @@
-export const PATTERNS = {
+export default {
   SELECTOR: /(\w+:\[.*?\])|(\w+:\(.*?\))|(\w+)/g,
   MESSAGE: {
     PARAMS: /\{(.*?)\}/g,

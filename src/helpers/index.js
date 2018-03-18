@@ -1,8 +1,19 @@
-export * from './selector.helper';
-export * from './isType.helper';
-export * from './isArray.helper';
-export * from './isObject.helper';
-export * from './isString.helper';
-export * from './isNumber.helper';
-export * from './isFunction.helper';
-export * from './get.helper';
+import $ from './selectorHelper';
+import isType from './isTypeHelper';
+import isArray from './isArrayHelper';
+import isObject from './isObjectHelper';
+import isString from './isStringHelper';
+import isNumber from './isNumberHelper';
+import isFunction from './isFunctionHelper';
+import get from './getHelper';
+
+export {
+  $,
+  isType,
+  isArray,
+  isObject,
+  isString,
+  isNumber,
+  isFunction,
+  get,
+};

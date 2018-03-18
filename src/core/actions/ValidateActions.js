@@ -1,9 +1,9 @@
-import { ErrorActions } from '../actions/ErrorActions';
-import { MessageActions } from '../actions/MessageActions';
+import ErrorActions from './ErrorActions';
+import MessageActions from './MessageActions';
 import { isString, isFunction } from '../../helpers';
 import State from '../states';
 
-export const MethodActions = {
+const ValidateActions = {
   getAll() {
     return State.validations;
   },
@@ -15,14 +15,16 @@ export const MethodActions = {
 
     if (hasParams && msg) {
       MessageActions.set(name, msg);
-      MethodActions.set(name, fn);
+      ValidateActions.set(name, fn);
     }
 
-    if (!hasParams) ErrorActions.reference('add');
-    if (!msg) ErrorActions.reference('msg', name);
+    if (!hasParams) ErrorActions.set('add');
+    if (!msg) ErrorActions.set('msg', name);
   },
 };
 
 State.validations = {
-  add: MethodActions.add,
+  add: ValidateActions.add,
 };
+
+export default ValidateActions;
