@@ -1,13 +1,13 @@
 const ENV = (JSON.stringify(process.env.NODE_ENV || 'dev'));
+const Package = require('./package.json');
 const path = require('path');
 const webpack = require('webpack');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Package = require('./package.json');
 
 module.exports = {
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
   entry: {
     demo: './demo/vanilla/index.js',
     bundle: './src/index.js',
