@@ -1,5 +1,5 @@
 import PATTERNS from '../constants/patterns';
-import { isArray, isObject, isString, isNumber, get } from '../../helpers';
+import { isArray, isObject, isString, isNumber, isBoolean, get } from '../../helpers';
 
 const ReplaceActions = {
   message: {
@@ -15,7 +15,7 @@ const ReplaceActions = {
           const pureKey = current.replace(PATTERNS.MESSAGE.BRACES, '');
 
           const map = {
-            [isString(params) || isNumber(params)]: params,
+            [isString(params) || isNumber(params) || isBoolean(params)]: params,
             [isArray(params)]: params[pureKey],
             [isObject(params)]: get(params, pureKey, current),
           };

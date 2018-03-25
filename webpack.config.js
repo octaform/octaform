@@ -9,8 +9,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   devtool: 'inline-source-map',
   entry: {
-    demo: './demo/vanilla/index.js',
-    bundle: './src/index.js',
+    demo: './demo/js/index.js',
+    bundle: './src/core/index.js',
   },
   output: {
     filename: '[name].[chunkhash].js',
@@ -53,7 +53,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './demo/vanilla/index.html',
+      template: './demo/index.html',
     }),
     new ExtractTextPlugin('styles.css'),
     new webpack.optimize.CommonsChunkPlugin({

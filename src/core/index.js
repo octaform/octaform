@@ -9,4 +9,6 @@ class Octaform {
   }
 }
 
-export default Octaform;
+export default (
+  new Octaform()
+);

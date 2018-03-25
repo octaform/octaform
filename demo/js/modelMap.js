@@ -1,4 +1,4 @@
-import Octaform from '../../src';
+import Octaform from '../../src/core';
 
 const FieldMap = Octaform.model.use({
   firstName: 'ModelDL',
