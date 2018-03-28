@@ -9,7 +9,7 @@
           ]
         },
         "modules": false,
-        "useBuiltIns": true,
+        "useBuiltIns": false,
         "debug": false
       }
     ]

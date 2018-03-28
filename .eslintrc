@@ -13,7 +13,9 @@
     "eol-last": 0,
     "no-param-reassign": 0,
     "prefer-destructuring": 0,
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "prefer-const": 1,
+    "no-plusplus": 0
   },
   "globals": {
     "document": true,

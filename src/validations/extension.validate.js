@@ -1,4 +1,4 @@
-import Octaform from '../../src/core';
+import Octaform from '../core';
 
 Octaform.validator.add('extension', (value, element, params) => {
   const file = Array.from(element[0].files);

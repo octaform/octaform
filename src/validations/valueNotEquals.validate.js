@@ -1,4 +1,4 @@
-import Octaform from '../../src/core';
+import Octaform from '../core';
 
 Octaform.validator.add('valueNotEquals', (value, element, param) => {
   return param !== value;

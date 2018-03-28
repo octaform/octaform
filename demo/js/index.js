@@ -1,16 +1,6 @@
 import '../scss/styles.scss';
-import Octaform from '../../src/core';
-import '../validations/email.validate';
-import '../validations/required.validate';
-import '../validations/minlength.validate';
-import '../validations/maxlength.validate';
-import '../validations/valueNotEquals.validate';
-import '../validations/extension.validate';
-import '../validations/maxsize.validate';
-import '../validations/number.validate';
-import '../validations/letter.validate';
-import '../validations/teste.validate';
 import '../models/driverLicense.model';
+import Octaform from '../../src/core';
 import fieldMap from './fieldMap';
 import modelMap from './modelMap';
 
@@ -21,9 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return (`
       <li> 
         <strong>Error <i class='field'>${field}</i></strong>
-        <span>
-          ${msg}
-        </span>
+        <span>${msg}</span>
       </li>
     `);
   }
@@ -38,7 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
       if (validate.length){
         errors.innerHTML = '';
 
+        document
+          .querySelectorAll('.invalid')
+          .forEach((element) => {
+            element.classList.remove('invalid');  
+          });
+
         validate.forEach((error) => {
+          const field = document.getElementsByName(error.field);
+          field[0].classList.add('invalid');
+
           error.messages.forEach((msg) => {
             errors.innerHTML = errors.innerHTML.concat(getTplError(error.field, msg));
           });

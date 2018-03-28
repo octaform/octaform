@@ -5,15 +5,17 @@ const webpack = require('webpack');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const glob = require('glob');
 
 module.exports = {
   devtool: 'inline-source-map',
   entry: {
     demo: './demo/js/index.js',
-    bundle: './src/core/index.js',
+    octaform: './src/core/index.js',
+    validations: glob.sync('./src/validations/*.js'),
   },
   output: {
-    filename: '[name].[chunkhash].js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
@@ -58,7 +60,7 @@ module.exports = {
     new ExtractTextPlugin('styles.css'),
     new webpack.optimize.CommonsChunkPlugin({
       names: [
-        'bundle',
+        'octaform',
       ],
     }),
     new CircularDependencyPlugin({

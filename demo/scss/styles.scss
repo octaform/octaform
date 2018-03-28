@@ -37,6 +37,10 @@ div {
 @include inputTextTypes {
   @extend %inputTextStyle;
   
+  &.invalid{
+    border-color: #f60202;
+  }
+
   &:focus{
     @extend %inputFocusStyle;
   }
@@ -45,6 +49,10 @@ div {
 textarea,
 select {
   @extend %inputTextStyle;
+
+  &.invalid{
+    border-color: #f60202;
+  }
 }
 
 input {
@@ -67,6 +75,12 @@ input {
 
       &:before{
         @extend %inputFocusStyle;
+      }
+    }
+
+    &.invalid{
+      &:before{
+        border-color: #f60202;
       }
     }
 

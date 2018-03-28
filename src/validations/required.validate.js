@@ -1,4 +1,4 @@
-import Octaform from '../../src/core';
+import Octaform from '../core';
 
 Octaform.validator.add('required', (value) => {
   return (!!value.length || false);

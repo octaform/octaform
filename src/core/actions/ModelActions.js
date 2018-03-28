@@ -4,7 +4,7 @@ const ModelActions = {
   getAll(){
     return State.models;
   },
-  set({ name, rules = {}, messages }){
+  set({ name, rules = {}, messages = {} }){
     State.models[name] = {
       rules,
       ...(messages && { messages }),

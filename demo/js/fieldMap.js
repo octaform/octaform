@@ -4,7 +4,6 @@ export default {
     rules: {
       required: true,
       minlength: 4,
-      letter: true,
       // array: [
       //   '(Array:0)',
       //   '(Array:1)',
@@ -24,13 +23,8 @@ export default {
       required: 'First Name is required',
     },
   },
-  lastName: 'required',
-  email: {
-    rules: {
-      required: true,
-      email: true,
-    },
-  },
+  lastName: 'minlength:3',
+  email: 'email',
   country: {
     rules: {
       required: true,

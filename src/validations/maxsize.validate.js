@@ -1,4 +1,4 @@
-import Octaform from '../../src/core';
+import Octaform from '../core';
 
 Octaform.validator.add('maxsize', (value, element, param) => {
   const file = Array.from(element[0].files);  

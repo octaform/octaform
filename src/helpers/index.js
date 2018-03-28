@@ -6,6 +6,8 @@ import isString from './isStringHelper';
 import isNumber from './isNumberHelper';
 import isBoolean from './isBooleanHelper';
 import isFunction from './isFunctionHelper';
+import randomHash from './randomHashHelper';
+import uniqueId from './uniqueIdHelper';
 import get from './getHelper';
 
 export {
@@ -17,5 +19,7 @@ export {
   isNumber,
   isBoolean,
   isFunction,
+  randomHash,
+  uniqueId,
   get,
 };
