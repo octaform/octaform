@@ -11,7 +11,6 @@ const ArrayEntry = (field) => {
 
   const modelName = uniqueId();
   ModelActions.set({ name: modelName, rules: rulesObj });
-  console.log(ModelActions.getAll());
   return ModelActions.get(modelName);
 };
 
