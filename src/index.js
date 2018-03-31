@@ -1,5 +1,5 @@
-import { ValidateRules, ModelRules } from './rules';
-import ValidateActions from './actions/ValidateActions';
+import { ValidateRules, ModelRules } from './core/rules';
+import ValidateActions from './core/actions/ValidateActions';
 
 class Octaform {
   constructor() {
@@ -9,6 +9,4 @@ class Octaform {
   }
 }
 
-export default (
-  new Octaform()
-);
+export default new Octaform();

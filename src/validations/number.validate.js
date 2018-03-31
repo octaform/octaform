@@ -1,4 +1,4 @@
-import Octaform from '../core';
+import Octaform from '../';
 
 Octaform.validator.add('number', (value) => {
   return /^\d+$/g.test(value);

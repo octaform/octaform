@@ -1,4 +1,4 @@
-import Octaform from '../core';
+import Octaform from '../';
 
 Octaform.validator.add('email', (value) => {
   return (/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i).test(value) || false;
