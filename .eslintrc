@@ -1,6 +1,10 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb-base",
+  "extends": [
+    "airbnb-base", 
+    "plugin:jest/recommended"
+  ],
+  "plugins": ["jest"],
   "rules": {
     "no-console": 0,
     "class-methods-use-this": 0,
