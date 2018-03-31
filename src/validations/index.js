@@ -1,0 +1,11 @@
+import './email.validate';
+import './extension.validate';
+import './letter.validate';
+import './maxlength.validate';
+import './minlength.validate';
+import './maxsize.validate';
+import './number.validate';
+import './required.validate';
+import './valueNotEquals.validate';
+import './minchecked.validate';
+import './teste.validate';

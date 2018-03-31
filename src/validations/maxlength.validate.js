@@ -1,4 +1,4 @@
-import Octaform from '../core';
+import Octaform from '../';
 
 Octaform.validator.add('maxlength', (value, element, param) => {
   return (value.length <= param);
