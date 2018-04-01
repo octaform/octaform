@@ -1,4 +1,4 @@
-import ModelFactory from '../../src/core/factories/ModelFactory';
+import ModelFactory from '../../src/factories/ModelFactory';
 
 describe('ModelFactory Test', () => {
   test('.toUser()', () => {

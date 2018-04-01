@@ -1,5 +1,5 @@
 import PATTERNS from '../constants/patterns';
-import { isArray, isObject, isString, isNumber, isBoolean, get } from '../../helpers';
+import { isArray, isObject, isString, isNumber, isBoolean, get } from '../helpers';
 
 const ReplaceActions = {
   message: {

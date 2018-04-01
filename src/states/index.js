@@ -1,8 +1,10 @@
+import MESSAGES from '../constants/messages';
+
 export default {
   validations: {},
   models: {},
   messages: {
     fields: {},
-    core: {},
+    core: MESSAGES.CORE,
   },
 };

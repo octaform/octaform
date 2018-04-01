@@ -1,4 +1,4 @@
-import { isString, isObject } from '../../helpers';
+import { isString, isObject } from '../helpers';
 import ModelActions from '../actions/ModelActions';
 
 export default {

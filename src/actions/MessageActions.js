@@ -1,5 +1,4 @@
 import State from '../states';
-import MESSAGES from '../constants/messages';
 
 const MessageActions = {
   getAll() {
@@ -17,7 +16,6 @@ const MessageActions = {
     State.messages = Object.assign(
       State.messages,
       { fields },
-      { core: MESSAGES.CORE },
     );
   },
 };

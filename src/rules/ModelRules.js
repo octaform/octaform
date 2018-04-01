@@ -1,4 +1,4 @@
-import { isArray, isObject } from '../../helpers';
+import { isArray, isObject } from '../helpers';
 import ModelActions from '../actions/ModelActions';
 import ModelFactory from '../factories/ModelFactory';
 

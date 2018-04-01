@@ -3,18 +3,18 @@ const Package = require('./package.json');
 const path = require('path');
 const webpack = require('webpack');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
-const glob = require('glob');
 
 module.exports = {
   devtool: 'inline-source-map',
   entry: {
-    octaform: './src/index.js',
-    validations: glob.sync('./src/validations/*.js'),
+    index: './src/index.js',
   },
   output: {
+    library: Package.alias,
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-    libraryTarget: 'umd',
   },
   module: {
     rules: [{
@@ -28,7 +28,7 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['octaform'],
+      names: ['index'],
     }),
     new CircularDependencyPlugin({
       exclude: /node_modules/,

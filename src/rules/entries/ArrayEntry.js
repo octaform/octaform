@@ -1,4 +1,4 @@
-import uniqueId from '../../../helpers/uniqueIdHelper';
+import uniqueId from '../../helpers/uniqueIdHelper';
 import ModelActions from '../../actions/ModelActions';
 import paramsUtil from '../../utils/paramsUtils';
 

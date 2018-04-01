@@ -1,21 +1,8 @@
 {
   "presets": [
-    ["env",
-      {
-        "targets": {
-          "browsers": [
-            "last 2 versions",
-            "ie >= 7"
-          ]
-        },
-        "modules": false,
-        "useBuiltIns": false,
-        "debug": false
-      }
-    ]
+    "es2015"
   ],
   "plugins": [
-    "transform-object-rest-spread",
-    "transform-es2015-modules-umd"
+    ["transform-object-rest-spread", { "useBuiltIns": true }]
   ]
 }
