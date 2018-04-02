@@ -1,8 +1,12 @@
 import { ValidateRules, ModelRules } from './rules';
 import ValidateActions from './actions/ValidateActions';
 
-module.exports = {
-  validator: ValidateActions.getAll(),
-  validateAll: ValidateRules.all,
-  model: ModelRules,
-};
+class Octaform {
+  constructor() {
+    this.validator = ValidateActions.getAll();
+    this.validateAll = ValidateRules.all;
+    this.model = ModelRules;
+  }
+}
+
+module.exports = Octaform;
