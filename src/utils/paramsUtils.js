@@ -1,9 +1,9 @@
 import { PATTERNS } from '../constants';
 
-const params = {
+export default {
   get: {
-    list(string) {
-      const map = PATTERNS.LIST_RULE.exec(string);
+    shortStringValidation(string) { // min:3 - Short validation
+      const map = PATTERNS.SHORT_RULE.exec(string);
 
       return (
         map ?
@@ -11,7 +11,8 @@ const params = {
           { [string]: true }
       );
     },
+    spreedList(string) { // ...{} - To array params
+      return PATTERNS.MESSAGE.LIST.exec(string);
+    },
   },
 };
-
-export default params;

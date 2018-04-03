@@ -1,4 +1,5 @@
 import { ReplaceActions, ErrorActions } from '../actions';
+import dom from '../helpers/domHelper';
 
 const ApplyRules = (field = {}, validations = {}) => {
   const errors = {
@@ -15,6 +16,7 @@ const ApplyRules = (field = {}, validations = {}) => {
           field.value,
           field.element,
           params,
+          dom,
         );
 
         if (!isValid) {

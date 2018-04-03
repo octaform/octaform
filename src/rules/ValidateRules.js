@@ -1,5 +1,5 @@
 import ApplyRules from './ApplyRules';
-import { $, isString, isObject } from '../helpers';
+import { dom, isString, isObject } from '../helpers';
 import { ErrorActions, MessageActions, ValidateActions } from '../actions';
 import { StringEntry, ObjectEntry } from './entries';
 
@@ -17,7 +17,7 @@ const ValidateRules = {
 
         if (entryRuleType.true) {
           const self = entryRuleType.true || {};
-          const element = $(selector);
+          const element = dom(selector);
 
           MessageActions.setDictionary(selector, self.messages);
 

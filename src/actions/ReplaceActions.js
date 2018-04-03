@@ -1,4 +1,5 @@
 import PATTERNS from '../constants/patterns';
+import paramsUtils from '../utils/paramsUtils';
 import { isArray, isObject, isString, isNumber, isBoolean, get } from '../helpers';
 
 const ReplaceActions = {
@@ -9,7 +10,7 @@ const ReplaceActions = {
     },
     validation(msg, params){
       const searchItems = msg.match(PATTERNS.MESSAGE.PARAMS);
-      const listParams = PATTERNS.MESSAGE.LIST.exec(msg);
+      const listParams = paramsUtils.get.spreedList(msg);
 
       if (listParams){
         const text = params.join(listParams[1] || ', ');

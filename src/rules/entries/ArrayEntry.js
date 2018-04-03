@@ -1,11 +1,11 @@
 import uniqueId from '../../helpers/uniqueIdHelper';
 import ModelActions from '../../actions/ModelActions';
-import paramsUtil from '../../utils/paramsUtils';
+import paramsUtils from '../../utils/paramsUtils';
 
 // extractRulesFromArray
 const ArrayEntry = (field) => {
   const rulesObj = field.reduce((acc, current) => {
-    const rules = paramsUtil.get.list(current);
+    const rules = paramsUtils.get.shortStringValidation(current);
     return { ...acc, ...rules };
   }, {});
 

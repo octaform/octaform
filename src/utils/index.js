@@ -1,3 +1,3 @@
-import paramsUtil from './paramsUtils';
+import paramsUtils from './paramsUtils';
 
-export { paramsUtil };
+export { paramsUtils };

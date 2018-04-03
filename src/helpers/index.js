@@ -1,4 +1,4 @@
-import $ from './selectorHelper';
+import dom from './domHelper';
 import isType from './isTypeHelper';
 import isArray from './isArrayHelper';
 import isObject from './isObjectHelper';
@@ -11,7 +11,7 @@ import uniqueId from './uniqueIdHelper';
 import get from './getHelper';
 
 export {
-  $,
+  dom,
   isType,
   isArray,
   isObject,

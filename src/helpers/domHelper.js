@@ -1,4 +1,4 @@
-const $ = (selector) => {
+const dom = (selector) => {
   const elemByName = document.getElementsByName(selector);
   const elemByClass = document.getElementsByClassName(selector);
   const elemById = document.getElementById(selector);
@@ -22,4 +22,4 @@ const $ = (selector) => {
   return element;
 };
 
-export default $;
+export default dom;
