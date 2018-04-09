@@ -1,9 +1,17 @@
-describe('my beverage', () => {
-  test('adds 1 + 2 to equal 3', () => {
-    expect(true).toBe(true);
+import Plugin from '../../src';
+
+const Octaform = new Plugin();
+
+describe('Index :: Octaform', () => {
+  test('Test: Validator Instance', () => {
+    expect(Octaform.validator).toBeDefined();
   });
 
-  test('adds 2 + 2 to equal 3', () => {
-    expect(true).toBe(true);
+  test('Test: ValidateAll Instance', () => {
+    expect(Octaform.validateAll).toBeDefined();
+  });
+
+  test('Test: Model Instance', () => {
+    expect(Octaform.model).toBeDefined();
   });
 });
