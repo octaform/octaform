@@ -19,7 +19,8 @@
     "prefer-destructuring": 0,
     "import/no-extraneous-dependencies": 0,
     "prefer-const": 1,
-    "no-plusplus": 0
+    "no-plusplus": 0,
+    "new-cap": 0
   },
   "globals": {
     "document": true,
