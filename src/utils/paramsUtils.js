@@ -11,7 +11,7 @@ export default {
           { [string]: true }
       );
     },
-    spreedList(string) { // ...{} - To array params
+    spreadList(string) { // ...{} - To array params
       return PATTERNS.MESSAGE.LIST.exec(string);
     },
   },

@@ -19,7 +19,7 @@ const ValidateRules = {
           const self = entryRuleType.true || {};
           const element = dom(selector);
 
-          MessageActions.setDictionary(selector, self.messages);
+          MessageActions.setCustomFieldMsg(selector, self.messages);
 
           if (!element.length) {
             ErrorActions.set('field', selector);

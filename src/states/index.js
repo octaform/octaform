@@ -6,5 +6,6 @@ export default {
   messages: {
     fields: {},
     core: MESSAGES.CORE,
+    validator: {},
   },
 };

@@ -21,7 +21,7 @@ const ApplyRules = (field = {}, validations = {}) => {
 
         if (!isValid) {
           const userMessage = field.messages.fields[field.selector] || {};
-          const message = (userMessage[key] || field.messages[key]);
+          const message = (userMessage[key] || field.messages.validator[key]);
           const result = ReplaceActions.message.validation(
             message, 
             params,

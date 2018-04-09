@@ -2,15 +2,15 @@ import { isString, isObject } from '../helpers';
 import ModelActions from '../actions/ModelActions';
 
 export default {
-  toUser(field, data){
+  toUser(fieldName, fieldModel){
     const model = {
-      [isString(data)]: ModelActions.get(data),
-      [isObject(data)]: ModelActions.get(data.model),
+      [isString(fieldModel)]: ModelActions.get(fieldModel),
+      [isObject(fieldModel)]: ModelActions.get(fieldModel.model),
     };
 
     return {
-      [field]: Object.assign(model.true, {
-        ...isObject(data) && { value: data.value },
+      [fieldName]: Object.assign(model.true, {
+        ...isObject(fieldModel) && { value: fieldModel.value },
       }),
     };
   },

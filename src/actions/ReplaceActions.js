@@ -10,7 +10,7 @@ const ReplaceActions = {
     },
     validation(msg, params){
       const searchItems = msg.match(PATTERNS.MESSAGE.PARAMS);
-      const listParams = paramsUtils.get.spreedList(msg);
+      const listParams = paramsUtils.get.spreadList(msg);
 
       if (listParams){
         const text = params.join(listParams[1] || ', ');

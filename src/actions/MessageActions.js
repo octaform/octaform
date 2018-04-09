@@ -5,17 +5,12 @@ const MessageActions = {
     return State.messages;
   },
   set(name, msg) {
-    State.messages[name] = msg;
+    State.messages.validator[name] = msg;
   },
-  setDictionary(field, userMessages) {
-    const fields = Object.assign(
+  setCustomFieldMsg(field, userMessages) {
+    State.messages.fields = Object.assign(
       State.messages.fields,
-      (userMessages && { [field]: userMessages }),
-    );
-
-    State.messages = Object.assign(
-      State.messages,
-      { fields },
+      (!!Object.keys(userMessages).length && { [field]: userMessages }),
     );
   },
 };
