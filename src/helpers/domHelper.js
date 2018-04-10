@@ -3,23 +3,15 @@ const dom = (selector) => {
   const elemByClass = document.getElementsByClassName(selector);
   const elemById = document.getElementById(selector);
   const elemByAll = document.querySelectorAll(selector);
-
-  let element = (
+  
+  const element = (
     ((elemByName && elemByName.length) && elemByName) ||
     ((elemByClass && elemByClass.length) && elemByClass) ||
-    ((elemById && elemById.length) && elemById) ||
+    (elemById && [elemById]) ||
     ((elemByAll && elemByAll.length) && elemByAll)
   ) || [];
-
-  if (element.length){
-    element = (
-      element.nodeName ? 
-        (['SELECT'].includes(element.nodeName) && [element]) : 
-        Array.from(element)
-    );
-  }
-
-  return element;
+  
+  return Array.from(element);
 };
 
 export default dom;
