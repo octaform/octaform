@@ -5,10 +5,10 @@
   "description": "Octaform is a library that helps developers validate forms in an easy way, being completely agnostic any framework.",
   "main": "src/index.js",
   "scripts": {
-    "start": "NODE_ENV=development webpack --watch --config build/config.dev.js",
+    "start": "NODE_ENV=development webpack --watch --config tools/config.dev.js",
     "test": "jest -c test/jest/config.dev.json --watchAll",
-    "prod": "jest -c test/jest/config.prod.json && npm run clean && NODE_ENV=production webpack -p --progress --config build/config.prod.js",
-    "build": "jest -c test/jest/config.prod.json && npm run clean && NODE_ENV=development webpack --config build/config.dev.js",
+    "prod": "jest -c test/jest/config.prod.json && npm run clean && NODE_ENV=production webpack -p --progress --config tools/config.prod.js",
+    "build": "jest -c test/jest/config.prod.json && npm run clean && NODE_ENV=development webpack --config tools/config.dev.js",
     "clean": "rimraf dist",
     "webpack": "node_modules/.bin/webpack"
   },
