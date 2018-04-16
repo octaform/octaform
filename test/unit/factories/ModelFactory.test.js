@@ -25,13 +25,13 @@ describe('Factory :: ModelFactory', () => {
   });
 
   test('Test: .toUser(field, data) :: Check value when model is not found', () => {
-    ModelActions.set(model);
+    ModelActions.set(model.name, model);
     const validationMap = ModelFactory.toUser('firstName', 'Teste');
     expect(validationMap).toEqual({ firstName: {} });
   });
 
   test('Test: .toUser(field, data) :: Check value when is object', () => {
-    ModelActions.set(model);
+    ModelActions.set(model.name, model);
     const value = 'DL123456';
     const param = { model: 'MyModel', value };
     const validationMap = ModelFactory.toUser('firstName', param);
