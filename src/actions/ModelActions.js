@@ -4,10 +4,14 @@ const ModelActions = {
   getAll(){
     return State.models;
   },
-  set({ name, rules = {}, messages = {} }){
+  deleteAll() {
+    State.models = {};
+  },
+  set({ name, rules = {}, messages = {}, value }){
     State.models[name] = {
       rules,
-      ...(messages && { messages }),
+      messages,
+      ...(value && { value }),
     };
   },
   get(name){

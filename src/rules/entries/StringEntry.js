@@ -6,12 +6,7 @@ import paramsUtils from '../../utils/paramsUtils';
 const StringEntry = (string) => {
   const modelName = uniqueId();
   const rules = paramsUtils.get.shortStringValidation(string);
-
-  ModelActions.set({ 
-    name: modelName, 
-    rules, 
-  });
-  
+  ModelActions.set({ name: modelName, rules });
   return ModelActions.get(modelName);
 };
 

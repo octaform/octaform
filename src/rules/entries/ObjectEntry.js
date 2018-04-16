@@ -3,13 +3,9 @@ import ModelActions from '../../actions/ModelActions';
 
 // extractRulesFromString
 const ObjectEntry = (object) => {
-  const modelName = uniqueId();
-  ModelActions.set({ 
-    name: modelName, 
-    rules: object.rules, 
-    messages: object.messages,
-  });
-  return ModelActions.get(modelName);
+  const name = uniqueId();
+  ModelActions.set({ name, ...object });
+  return ModelActions.get(name);
 };
 
 export default ObjectEntry;
