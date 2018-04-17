@@ -1,9 +1,8 @@
-import StringEntry from '../../../../src/rules/entries/StringEntry';
+import StringEntry from '../../../src/entries/StringEntry';
 
 describe('Rules/Entries :: StringEntry', () => {
   test('Test: Check object string rule - (email)', () => {
     const resultObj = StringEntry('email');
-    console.log(resultObj);
     expect(resultObj).toEqual({ 
       rules: { email: true }, 
       messages: {},

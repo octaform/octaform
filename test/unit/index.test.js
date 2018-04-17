@@ -10,8 +10,4 @@ describe('Index :: Octaform', () => {
   test('Test: ValidateAll Instance', () => {
     expect(Octaform.validateAll).toBeDefined();
   });
-
-  test('Test: Model Instance', () => {
-    expect(Octaform.model).toBeDefined();
-  });
 });

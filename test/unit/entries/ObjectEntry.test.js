@@ -1,4 +1,4 @@
-import ObjectEntry from '../../../../src/rules/entries/ObjectEntry';
+import ObjectEntry from '../../../src/entries/ObjectEntry';
 
 const ObjToTest = {
   value: 'field value',
