@@ -1,50 +1,55 @@
 import ApplyRules from './ApplyRules';
-import { dom, isString, isObject } from '../helpers';
-import { ErrorActions, MessageActions, ValidateActions, ModelActions } from '../actions';
-import { StringEntry, ObjectEntry } from './entries';
+import { dom, isString, isObject, isArray } from '../helpers';
+import { ErrorActions, MessageActions, ValidateActions } from '../actions';
+import { entryType } from '../entries';
 
 const ValidateRules = {
   all: (fieldMap = {}) => {
     const errors = [];
-    
-    ModelActions.deleteAll();
 
     Object.keys(fieldMap)
       .forEach((selector) => {
-        const field = fieldMap[selector];
+        const fieldRulesMapper = fieldMap[selector];
         
-        const entryRuleType = {
-          [isString(field)]: (isString(field) && StringEntry(field)),
-          [isObject(field)]: (isObject(field) && ObjectEntry(field)),
+        const fieldRulesEntryType = {
+          ...(isString(fieldRulesMapper) && entryType.field.string(fieldRulesMapper)),
+          ...(isObject(fieldRulesMapper) && entryType.field.object(fieldRulesMapper)),
         };
-        
-        if (entryRuleType.true) {
-          const self = entryRuleType.true || {};
+
+        if (fieldRulesEntryType) {
+          const fieldObjectRules = fieldRulesEntryType || {};
           const element = dom(selector);
-          
-          MessageActions.setCustomFieldMsg(selector, self.messages);
+
+          MessageActions.setCustomFieldMsg(selector, fieldObjectRules.messages);
 
           if (!element.length) {
             ErrorActions.set('field', selector);
           }
 
-          const value = (
-            self.value ||
-            (element.length ? element[element.length - 1].value : '')
+          const fieldValue = (
+            fieldObjectRules.value || 
+            (element.length && element[element.length - 1].value) ||
+            ('')
           );
 
-          const fieldRules = {
-            rules: (self.rules || {}),
+          const fieldRules = (
+            (isArray(fieldObjectRules.rules) && entryType.rules.array(fieldObjectRules.rules)) ||
+            (isObject(fieldObjectRules.rules) && fieldObjectRules.rules) ||
+            {}
+          );
+
+          const field = {
+            rules: fieldRules,
             messages: MessageActions.getAll(),
             selector,
             element,
-            value,
+            value: fieldValue,
           };
 
-          const valid = ApplyRules(fieldRules, ValidateActions.getAll());
+          const valid = ApplyRules(field, ValidateActions.getAll());
           if (valid.messages.length) errors.push(valid);
         } else {
-          ErrorActions.set('entry', field);
+          ErrorActions.set('entry', fieldRulesMapper);
         }
       });
 
