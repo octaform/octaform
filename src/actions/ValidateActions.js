@@ -10,9 +10,9 @@ const ValidateActions = {
   set(name, fn) {
     State.validations[name] = fn;
   },
-  add(mapper) {
-    if (isArray(mapper)) {
-      mapper.forEach(({ name, fn, message }) => {
+  add(listOfValidations) {
+    if (isArray(listOfValidations)) {
+      listOfValidations.forEach(({ name, fn, message }) => {
         const hasParams = (isString(name) && isFunction(fn) && isString(message));
 
         if (hasParams && message) {
@@ -24,7 +24,7 @@ const ValidateActions = {
         if (!hasParams) ErrorActions.set('add');
       });
     } else {
-      ErrorActions.set('add', mapper);
+      ErrorActions.set('add', listOfValidations);
     }
   },
 };

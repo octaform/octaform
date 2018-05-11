@@ -4,7 +4,7 @@ const ObjToTest = {
   rules: ['required', 'minlength:3'],
 };
 
-describe('Rules/Entries :: ArrayEntry', () => {
+describe('Entries :: ArrayEntry', () => {
   test('Test: Convert string to object and return the rules', () => {
     const resultObj = ArrayEntry(ObjToTest.rules);
     expect(resultObj).toEqual({

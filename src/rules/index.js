@@ -1,7 +1,7 @@
-import ApplyRules from './ApplyRules';
-import ValidateRules from './ValidateRules';
+import Rules from './Rules';
+import Validate from './Validate';
 
 export {
-  ValidateRules,
-  ApplyRules,
+  Validate,
+  Rules,
 };

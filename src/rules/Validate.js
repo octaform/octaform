@@ -1,10 +1,11 @@
-import ApplyRules from './ApplyRules';
+import Rules from './Rules';
 import { dom, isString, isObject, isArray } from '../helpers';
 import { ErrorActions, MessageActions, ValidateActions } from '../actions';
 import { entryType } from '../entries';
 
-const ValidateRules = {
-  all: (fieldMap = {}) => {
+const Validate = {
+  getAll: ValidateActions.getAll,
+  apply: (fieldMap = {}) => {
     const errors = [];
 
     Object.keys(fieldMap)
@@ -45,18 +46,19 @@ const ValidateRules = {
             element,
             value: fieldValue,
           };
-
-          const valid = ApplyRules(field, ValidateActions.getAll());
+          
+          // console.log('valid::', field);
+          const valid = Rules.apply(field, ValidateActions.getAll());
           if (valid.messages.length) errors.push(valid);
         } else {
           ErrorActions.set('entry', fieldRulesMapper);
         }
       });
 
-    ValidateRules.isValid = !errors.length;
+    Validate.isValid = !errors.length;
 
     return errors;
   },
 };
 
-export default ValidateRules;
+export default Validate;

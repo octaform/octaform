@@ -11,7 +11,7 @@ const ObjToTest = {
   },
 };
 
-describe('Rules/Entries :: ObjectEntry', () => {
+describe('Entries :: ObjectEntry', () => {
   test('Test: Has right format in object entry (With value prop)', () => {
     const resultObj = ObjectEntry(ObjToTest);
     expect(resultObj).toEqual(ObjToTest);
