@@ -11,5 +11,7 @@ module.exports = {
     license: Package.license,
     bugs: Package.bugs,
     homepage: Package.homepage,
+    files: Package.files,
+    dependencies: {},
   },
 };
