@@ -1,10 +1,9 @@
 <h1 align="center">
   <img src="https://avatars2.githubusercontent.com/u/37938941?s=400&u=b7a61cbf6b9686cb78d50258213b256159dbb7af&v=4" height="200" width="200"/>
   <p align="center">Octaform</p>
-  <p align="center" style="font-size: 0.5em">
-  Octaform is a library that helps developers validate forms in an easy way, being completely agnostic any framework, you can use everywhere you want
-  </p>
 </h1>
+
+Octaform helps developers validate forms in an easy way, being completely agnostic any framework, you can use everywhere you want
 
 ## Getting Started
 
@@ -152,4 +151,4 @@ const Schema = {
 Follow this repository and use our pre-defined validations [here](https://github.com/octaform/octaform-additional), or create your own validations using the Octaform API above
 
 ## Demo
-See the validations working on our demo page: https://octaform.github.io/octaform-demo
+See the validations working on our demo page: https://octaform.github.io/demo
