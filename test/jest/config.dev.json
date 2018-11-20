@@ -1,5 +1,6 @@
 {
   "verbose": true,
+  "testURL": "http://localhost",
   "rootDir": "../../",
   "coverageDirectory": "test/coverage/",
   "coverageReporters": [

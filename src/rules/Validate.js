@@ -16,26 +16,24 @@ const Validate = {
           ...(isString(fieldRulesMapper) && entryType.field.string(fieldRulesMapper)),
           ...(isObject(fieldRulesMapper) && entryType.field.object(fieldRulesMapper)),
         };
-
-        if (fieldRulesEntryType) {
-          const fieldObjectRules = fieldRulesEntryType || {};
+        
+        if (!!Object.keys(fieldRulesEntryType).length) {
           const element = dom(selector);
-
-          MessageActions.setCustomFieldMsg(selector, fieldObjectRules.messages);
+          MessageActions.setCustomFieldMsg(selector, fieldRulesEntryType.messages);
 
           if (!element.length) {
             ErrorActions.set('field', selector);
           }
 
           const fieldValue = (
-            fieldObjectRules.value || 
+            fieldRulesEntryType.value || 
             (element.length && element[element.length - 1].value) ||
             ('')
           );
 
           const fieldRules = (
-            (isArray(fieldObjectRules.rules) && entryType.rules.array(fieldObjectRules.rules)) ||
-            (isObject(fieldObjectRules.rules) && fieldObjectRules.rules) ||
+            (isArray(fieldRulesEntryType.rules) && entryType.rules.array(fieldRulesEntryType.rules)) ||
+            (isObject(fieldRulesEntryType.rules) && fieldRulesEntryType.rules) ||
             {}
           );
 
@@ -47,7 +45,6 @@ const Validate = {
             value: fieldValue,
           };
           
-          // console.log('valid::', field);
           const valid = Rules.apply(field, ValidateActions.getAll());
           if (valid.messages.length) errors.push(valid);
         } else {
