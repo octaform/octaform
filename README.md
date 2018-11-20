@@ -39,7 +39,7 @@ octaform.validateAll(
 ## Validator method: `octaform.validator`
 You are able to access all your validations that were defined in the `.add` method
 
-## Validator method: `octaform.validator.add`
+## Validator method: `octaform.validator.add()`
 
 The method `.add` is used to define your validation to the schema and validate your field, should be used as an `Array of Objects`. Follow below the example of an `Object` that should be define into `Array`
 
@@ -62,6 +62,10 @@ module.exports = {
   },
 };
 ```
+
+## Validator method: `octaform.validateAll()`
+
+The method `validateAll` is used to call the validations based on an object that is defined the rules and will be applied to the fields
 
 ## Validation Schema
 
