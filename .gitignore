@@ -127,5 +127,7 @@ $RECYCLE.BIN/
 
 # Project
 build/
+dist/
+yarn.lock
 
 # End of https://www.gitignore.io/api/osx,node,linux,windows

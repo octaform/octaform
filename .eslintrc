@@ -1,5 +1,39 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb-base",
-  "rules": {}
+  "extends": [
+    "airbnb-base", 
+    "plugin:jest/recommended"
+  ],
+  "plugins": ["jest"],
+  "rules": {
+    "no-console": 0,
+    "class-methods-use-this": 0,
+    "ignoreComments": true,
+    "no-unused-vars": 1,
+    "no-trailing-spaces": 0,
+    "import/prefer-default-export": 0,
+    "arrow-body-style": 0,
+    "space-before-blocks": 0,
+    "eol-last": 0,
+    "no-param-reassign": 0,
+    "prefer-destructuring": 0,
+    "import/no-extraneous-dependencies": 0,
+    "prefer-const": 1,
+    "no-plusplus": 0,
+    "new-cap": 0,
+    "no-shadow": 0,
+    "object-curly-spacing": 0,
+    "object-curly-newline": 0,
+    "comma-dangle": 1,
+    "prefer-spread": 0,
+    "function-paren-newline": 0,
+    "jest/no-focused-tests": 0,
+    "no-extra-boolean-cast": 0
+  },
+  "globals": {
+    "document": true,
+    "window": true,
+    "console": true,
+    "_": true
+  }
 }

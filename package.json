@@ -1,50 +1,55 @@
 {
-  "name": "octaform-validate",
+  "name": "octaform",
+  "alias": "Octaform",
   "version": "1.0.0",
-  "description": "Octaform Validate is a library that helps developers to validate data forms in an easy way, being completely agnostic any framework.",
+  "description": "Octaform helps developers validate forms in an easy way, being completely agnostic any framework.",
   "main": "src/index.js",
   "scripts": {
-    "start": "npm run server",
-    "watch": "webpack --watch",
-    "server": "node_modules/.bin/webpack-dev-server",
-    "webpack": "node_modules/.bin/webpack",
-    "production": "npm run clean && npm run webpack -p",
-    "build": "npm run clean && npm run webpack",
+    "start": "NODE_ENV=development webpack --watch --config tools/config.dev.js",
+    "test": "jest -c test/jest/config.dev.json --watchAll",
+    "build:prod": "jest -c test/jest/config.prod.json && npm run clean && NODE_ENV=production webpack -p --progress --config tools/config.prod.js",
+    "build:dev": "jest -c test/jest/config.prod.json && npm run clean && NODE_ENV=development webpack --config tools/config.dev.js",
     "clean": "rimraf dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "webpack": "node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chrisgfortes/octaform-validate.git"
+    "url": "https://github.com/octaform/octaform"
   },
   "author": "Christian Fortes",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/chrisgfortes/octaform-validate/issues"
+    "url": "https://github.com/octaform/octaform/issues"
   },
-  "homepage": "https://github.com/chrisgfortes/octaform-validate#readme",
+  "homepage": "https://github.com/octaform/octaform#readme",
+  "dependencies": {
+    "lodash": "^4.17.5"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
+    "babel-jest": "^22.4.3",
     "babel-loader": "^7.1.3",
-    "babel-preset-env": "^1.6.1",
+    "babel-plugin-lodash": "^3.3.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
     "circular-dependency-plugin": "^4.4.0",
-    "copy-webpack-plugin": "^4.4.2",
-    "css-loader": "^0.28.10",
+    "copy-webpack-plugin": "^4.5.1",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jest": "^21.15.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "html-webpack-plugin": "^2.30.1",
-    "node-sass": "^4.7.2",
+    "generate-json-webpack-plugin": "^0.3.0",
+    "glob": "^7.1.2",
+    "jest": "^22.4.3",
+    "jsdom": "^11.7.0",
+    "lodash-webpack-plugin": "^0.11.5",
     "rimraf": "^2.6.2",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.20.2",
     "webpack": "^3.11.0",
     "webpack-cli": "^2.0.9",
-    "webpack-dev-server": "^2.11.2"
+    "webpack-merge": "^4.1.2"
   }
 }

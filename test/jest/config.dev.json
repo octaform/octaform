@@ -1,0 +1,14 @@
+{
+  "verbose": true,
+  "testURL": "http://localhost",
+  "rootDir": "../../",
+  "coverageDirectory": "test/coverage/",
+  "coverageReporters": [
+    "html"
+  ],
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "src/**/*.js",
+    "!**/node_modules/**"
+  ]
+}
