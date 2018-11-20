@@ -156,3 +156,13 @@ Follow this repository and use our pre-defined validations [here](https://github
 
 ## Demo
 See the validations working on our demo page: https://octaform.github.io/demo
+
+## Changelog
+
+[Check out releases](https://github.com/octaform/octaform/releases)
+
+## License
+
+[The MIT License (MIT)](/LICENSE.md)
+
+Copyright (c) 2018 Christian Fortes

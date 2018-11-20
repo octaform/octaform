@@ -3,8 +3,26 @@
   "alias": "Octaform",
   "version": "1.0.0",
   "description": "Octaform helps developers validate forms in an easy way, being completely agnostic any framework.",
-  "main": "src/index.js",
+  "main": "index.js",
+  "homepage": "https://github.com/octaform/octaform#readme",
+  "author": "Christian Fortes",
+  "license": "MIT",
+  "bugs": "https://github.com/octaform/octaform/issues",
+  "keywords": [
+    "form",
+    "forms",
+    "formjs",
+    "form validation",
+    "validation",
+    "react",
+    "angular",
+    "vue",
+    "javascript",
+    "vanilla"
+  ],
   "scripts": {
+    "prepublish": "npm run build:prod",
+    "publish": "npm publish dist/ ",
     "start": "NODE_ENV=development webpack --watch --config tools/config.dev.js",
     "test": "jest -c test/jest/config.dev.json --watchAll",
     "build:prod": "jest -c test/jest/config.prod.json && npm run clean && NODE_ENV=production webpack -p --progress --config tools/config.prod.js",
@@ -16,12 +34,6 @@
     "type": "git",
     "url": "https://github.com/octaform/octaform"
   },
-  "author": "Christian Fortes",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/octaform/octaform/issues"
-  },
-  "homepage": "https://github.com/octaform/octaform#readme",
   "dependencies": {
     "lodash": "^4.17.5"
   },
