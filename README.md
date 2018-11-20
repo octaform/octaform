@@ -3,7 +3,7 @@
   <p align="center">Octaform</p>
 </h1>
 
-Octaform helps developers validate forms in an easy way, being completely agnostic any framework, you can use everywhere you want
+Octaform helps developers validate forms in an easy way, being completely agnostic to framework, you can use anywhere you want.
 
 ## Getting Started
 
