@@ -34,7 +34,7 @@ octaform.validator.add([
 
 // Call all validations that is defined into Schema
 octaform.validateAll({ 
-  /* Define your schema of validations */ 
+  /* Define your validation schema here */ 
 })
 ```
 
@@ -71,7 +71,7 @@ The method `validateAll` is used to call the validations based on an object that
 
 ## Validation Schema
 
-Schema is composed by an object 
+Schema is composed by an object see below
 
 ```js
 const Schema = {
@@ -84,6 +84,9 @@ const Schema = {
   others...
 };
 ```
+
+> Don't forget to add the attribute name on your input to recognize the DOM element and apply the validation: e.g.
+> `<input type="text" name="field_name" />`
 
 ### Field name: `(Required)`
 The field name is used to search the field into DOM, you should define the same name specified in the name attribute. The field name accept an `Object` or `String`
