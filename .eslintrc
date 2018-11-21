@@ -28,7 +28,11 @@
     "prefer-spread": 0,
     "function-paren-newline": 0,
     "jest/no-focused-tests": 0,
-    "no-extra-boolean-cast": 0
+    "no-extra-boolean-cast": 0,
+    "import/no-named-as-default-member": 0,
+    "max-len": 0,
+    "guard-for-in": 0,
+    "no-restricted-syntax": 0
   },
   "globals": {
     "document": true,

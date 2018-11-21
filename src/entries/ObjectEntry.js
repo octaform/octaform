@@ -1,8 +1,8 @@
-import RuleModel from '../models/RuleModel';
+import rule from '../models/rule';
 
 // extractRulesFromString
 const ObjectEntry = (object) => {
-  return RuleModel.get(object);
+  return rule.get(object);
 };
 
 export default ObjectEntry;

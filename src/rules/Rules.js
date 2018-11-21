@@ -1,5 +1,5 @@
 import { ReplaceActions, ErrorActions } from '../actions';
-import dom from '../helpers/domHelper';
+import dom from '../helpers/dom';
 
 const Rules = {
   apply: (field = {}, validations = {}) => {

@@ -1,7 +1,6 @@
 const Package = require('../package.json');
 const path = require('path');
 const webpack = require('webpack');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -21,7 +20,6 @@ module.exports = {
     }],
   },
   plugins: [
-    new LodashModuleReplacementPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['index'],
     }),

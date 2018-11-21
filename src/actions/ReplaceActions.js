@@ -1,6 +1,6 @@
 import PATTERNS from '../constants/patterns';
 import paramsUtils from '../utils/paramsUtils';
-import { isArray, isObject, isString, isNumber, isBoolean, get } from '../helpers';
+import Helpers from '../helpers';
 
 const ReplaceActions = {
   message: {
@@ -22,9 +22,9 @@ const ReplaceActions = {
           const pureKey = current.replace(PATTERNS.MESSAGE.BRACES, '');
 
           const map = {
-            [isString(params) || isNumber(params) || isBoolean(params)]: params,
-            [isArray(params)]: params[pureKey],
-            [isObject(params)]: get(params, pureKey, current),
+            [Helpers.types.isString(params) || Helpers.types.isNumber(params) || Helpers.types.isBoolean(params)]: params,
+            [Helpers.types.isArray(params)]: params[pureKey],
+            [Helpers.types.isObject(params)]: Helpers.get(params, pureKey, current),
           };
 
           return acc.replace(current, (map.true || ''));

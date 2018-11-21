@@ -1,5 +1,5 @@
 import Rules from './Rules';
-import { dom, isString, isObject, isArray } from '../helpers';
+import Helpers, { dom } from '../helpers';
 import { ErrorActions, MessageActions, ValidateActions } from '../actions';
 import { entryType } from '../entries';
 
@@ -13,8 +13,8 @@ const Validate = {
         const fieldRulesMapper = fieldMap[selector];
         
         const fieldRulesEntryType = {
-          ...(isString(fieldRulesMapper) && entryType.field.string(fieldRulesMapper)),
-          ...(isObject(fieldRulesMapper) && entryType.field.object(fieldRulesMapper)),
+          ...(Helpers.types.isString(fieldRulesMapper) && entryType.field.string(fieldRulesMapper)),
+          ...(Helpers.types.isObject(fieldRulesMapper) && entryType.field.object(fieldRulesMapper)),
         };
         
         if (!!Object.keys(fieldRulesEntryType).length) {
@@ -32,8 +32,8 @@ const Validate = {
           );
 
           const fieldRules = (
-            (isArray(fieldRulesEntryType.rules) && entryType.rules.array(fieldRulesEntryType.rules)) ||
-            (isObject(fieldRulesEntryType.rules) && fieldRulesEntryType.rules) ||
+            (Helpers.types.isArray(fieldRulesEntryType.rules) && entryType.rules.array(fieldRulesEntryType.rules)) ||
+            (Helpers.types.isObject(fieldRulesEntryType.rules) && fieldRulesEntryType.rules) ||
             {}
           );
 
