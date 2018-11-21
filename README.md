@@ -85,8 +85,8 @@ const Schema = {
 };
 ```
 
-> Don't forget to add the attribute name on your input to recognize the DOM element and apply the validation: e.g.
-> `<input type="text" name="field_name" />`
+> Don't forget to add the attribute name on your input to recognize the DOM element and apply the validation:
+> e.g. `<input type="text" name="field_name" />`
 
 ### Field name: `(Required)`
 The field name is used to search the field into DOM, you should define the same name specified in the name attribute. The field name accept an `Object` or `String`
