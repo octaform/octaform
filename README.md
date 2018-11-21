@@ -41,7 +41,7 @@ octaform.validateAll({
 ## Validator method: `octaform.validator`
 You are able to access all your validations that were defined in the `.add` method
 
-## Validator method: `octaform.validator.add()`
+## Validator method: `octaform.validator.add([object])`
 
 The method `.add` is used to define your validation to the schema and validate your field, should be used as an `Array of Objects`. Follow below the example of an `Object` that should be define into `Array`
 
@@ -49,9 +49,9 @@ Create a file with your validation e.g. `(test.js)`:
 
 ```js
 module.exports = {
-  name: 'validation_name', // The name will be used to define in the schema object
-  message: 'Validation Message', // Will show this message to user
-  fn: (value, element, param) => {
+  name: 'validation_name', // (Required) The name will be used to define in the schema object
+  message: 'Validation Message', // (Required) Will show for the user
+  fn: (value, element, param) => { // (Required)
     /** 
      * (value): Field value
      * (element): DOM element
@@ -85,11 +85,8 @@ const Schema = {
 };
 ```
 
-> Don't forget to add the attribute name on your input to recognize the DOM element and apply the validation:
-> e.g. `<input type="text" name="field_name" />`
-
 ### Field name: `(Required)`
-The field name is used to search the field into DOM, you should define the same name specified in the name attribute. The field name accept an `Object` or `String`
+The field name is used to search the element at the DOM, you should define the same name specified in the attribute `name`. The key `field_name` accept an `Object` or `String` as entrypoint
 
 ```js
 const Schema = {
@@ -107,6 +104,9 @@ const Schema = {
 };
 ```
 Note that defining as string, you are able to use only a single validation without any more options, this could be helpful if you dont need any more options and want to define a single validation, will save some lines of code
+
+> Don't forget to add the attribute name on your input to recognize the DOM element and apply the validation: 
+> e.g. `<input type="text" name="field_name" />`
 
 ### Value: `(Optional)`
 You can add a key to define your custom value and validate without using the value of DOM element, sometimes it's helpful when use some library such as React/Angular/Vue/etc...

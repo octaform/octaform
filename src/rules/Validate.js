@@ -16,7 +16,7 @@ const Validate = {
           ...(Helpers.types.isString(fieldRulesMapper) && entryType.field.string(fieldRulesMapper)),
           ...(Helpers.types.isObject(fieldRulesMapper) && entryType.field.object(fieldRulesMapper)),
         };
-        
+
         if (!!Object.keys(fieldRulesEntryType).length) {
           const element = dom(selector);
           MessageActions.setCustomFieldMsg(selector, fieldRulesEntryType.messages);
@@ -48,7 +48,7 @@ const Validate = {
           const valid = Rules.apply(field, ValidateActions.getAll());
           if (valid.messages.length) errors.push(valid);
         } else {
-          ErrorActions.set('entry', fieldRulesMapper);
+          ErrorActions.set('entry', selector);
         }
       });
 
