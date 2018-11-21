@@ -165,6 +165,6 @@ See the validations working on our demo page: https://octaform.github.io/demo
 
 ## License
 
-[The MIT License (MIT)](/LICENSE.md)
+[The MIT License (MIT)](/LICENSE)
 
 Copyright (c) 2018 Christian Fortes
