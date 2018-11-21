@@ -33,9 +33,9 @@ octaform.validator.add([
 ]);
 
 // Call all validations that is defined into Schema
-octaform.validateAll(
-  // Define your schema of validations
-)
+octaform.validateAll({ 
+  /* Define your schema of validations */ 
+})
 ```
 
 ## Validator method: `octaform.validator`
@@ -65,7 +65,7 @@ module.exports = {
 };
 ```
 
-## Validator method: `octaform.validateAll()`
+## Validator method: `octaform.validateAll(Schema)`
 
 The method `validateAll` is used to call the validations based on an object that is defined the rules and will be applied to the fields
 
@@ -75,7 +75,8 @@ Schema is composed by an object
 
 ```js
 const Schema = {
-  field_name: { // Is used the field name to search in the DOM
+  // field_name: is the name declared in the attribute name on your input
+  field_name: {
     value: String, // (Optional)
     rules: Object || Array
     messages: Object
