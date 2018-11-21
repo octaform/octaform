@@ -1,4 +1,5 @@
 import ValidateActions from '../../../src/actions/ValidateActions';
+import ReplaceActions from '../../../src/actions/ReplaceActions';
 import State from '../../../src/states';
 import MESSAGES from '../../../src/constants/messages';
 
@@ -28,7 +29,7 @@ describe('Actions :: ValidateActions', () => {
   });
 
   test('Test: .add([{ name, fn, message }]) :: Was not defined a message to validation', () => {
-    const msg = 'email has not been defined a validation message';
+    const replacedText = ReplaceActions.message.error(MESSAGES.CORE.msg, 'email');
     const mapper = [{
       name: 'email',
       fn: () => true,
@@ -36,7 +37,7 @@ describe('Actions :: ValidateActions', () => {
 
     expect(() => {
       ValidateActions.add(mapper);
-    }).toThrowError(msg);
+    }).toThrowError(replacedText);
   });
 
   test('Test: .add([{ name, fn, message }]) :: Was not defined a function to validate', () => {

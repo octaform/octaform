@@ -127,7 +127,7 @@ describe('Validate :: Index', () => {
   });
 
   test('Test: Should throw invalid entry schema to validate', () => {
-    const message = ReplaceActions.message.error(MESSAGES.CORE.entry, []);
+    const message = ReplaceActions.message.error(MESSAGES.CORE.entry, 'firstName');
 
     expect(() => {
       octaform.validateAll({
