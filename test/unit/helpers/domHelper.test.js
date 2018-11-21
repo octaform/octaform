@@ -1,6 +1,6 @@
 
 import dom from '../__helpers/dom';
-import domHelper from '../../../src/helpers/domHelper';
+import domHelper from '../../../src/helpers/dom';
 
 dom.add('./test/unit/__templates/fields.html');
 
