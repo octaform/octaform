@@ -24,8 +24,7 @@
     "vanilla"
   ],
   "scripts": {
-    "prepublish": "npm run build:prod",
-    "npm-publish": "npm publish dist",
+    "npm-publish": "npm run build:prod && npm publish dist",
     "start": "NODE_ENV=development webpack --watch --config tools/config.dev.js",
     "test": "jest -c test/jest/config.dev.json --watchAll",
     "build:prod": "jest -c test/jest/config.prod.json && npm run clean && NODE_ENV=production webpack -p --progress --config tools/config.prod.js",

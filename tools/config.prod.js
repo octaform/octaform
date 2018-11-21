@@ -34,7 +34,7 @@ module.exports = merge(webpackBase, {
     }),
     new GenerateJsonPlugin('package.json', npmConfig.package),
     new CopyWebpackPlugin([
-      './LICENSE.md',
+      './LICENSE',
       './README.md',
     ]),
   ],
