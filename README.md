@@ -36,10 +36,10 @@ Octaform.validateAll({
 })
 ```
 
-## Validator method: `octaform.validator`
+## Validator method: `Octaform.validator`
 Validator return an object that able you to access all validations that were previously defined in the `.add` method
 
-## Validator method: `octaform.validator.add(Array[Object])`
+## Validator method: `Octaform.validator.add(Array[Object])`
 The method `.add` is used to define the validation that will be used by schema and validate all fields. This method is waiting as parameter an `Array[Object]`. Follow below the example:
 
 Create a file that will be your validation (e.g. `email.validation.js`):
@@ -65,7 +65,7 @@ module.exports = {
 };
 ```
 
-## Validator method: `octaform.validateAll(Schema)`
+## Validator method: `Octaform.validateAll(Schema)`
 The method `validateAll` is used to call the validations based on a schema. Check out an example of the schema below:
 
 ```js
