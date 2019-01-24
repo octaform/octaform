@@ -1,6 +1,4 @@
-import Plugin from '../../src';
-
-const Octaform = new Plugin();
+import Octaform from '../../src';
 
 describe('Index :: Octaform', () => {
   test('Test: Validator Instance', () => {

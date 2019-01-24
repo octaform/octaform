@@ -9,8 +9,7 @@ import domHelper from '../../../src/helpers/dom';
 
 dom.add('./test/unit/__templates/fields.html');
 
-// Retorno
-const MockToResult = {
+const ExpectedMock = {
   field: 'firstName',
   messages: [],
 };
@@ -26,8 +25,7 @@ const MockToApply = {
   value: '',
 };
 
-const octaform = new Octaform();
-octaform.validator.add(Additionais);
+Octaform.validator.add(Additionais);
 
 describe('Rules :: Rules', () => {
   test('Test: Should field be invalid', () => {
@@ -38,38 +36,38 @@ describe('Rules :: Rules', () => {
       rules.minlength,
     );
 
-    MockToResult.messages.push(
+    ExpectedMock.messages.push(
       messages.validator.required,
       minLengthMSG,
     );
 
-    const isValid = Rules.apply(MockToApply, octaform.validator);
-    expect(isValid).toEqual(MockToResult);
+    const isValid = Rules.apply(MockToApply, Octaform.validator);
+    expect(isValid).toEqual(ExpectedMock);
   });
 
   test('Test: Should value of field be valid', () => {
     MockToApply.value = 'abcd';
-    MockToResult.messages = [];
+    ExpectedMock.messages = [];
 
-    const isValid = Rules.apply(MockToApply, octaform.validator);
-    expect(isValid).toEqual(MockToResult);
+    const isValid = Rules.apply(MockToApply, Octaform.validator);
+    expect(isValid).toEqual(ExpectedMock);
   });
 
   test('Test: Should not have the validation to required', () => {
     const { messages } = MockToApply;
-    delete octaform.validator.required;
+    delete Octaform.validator.required;
     const errorMSG = ReplaceActions.message.error(
       messages.core.undefined,
       'required',
     );
 
     expect(() => {
-      Rules.apply(MockToApply, octaform.validator);
+      Rules.apply(MockToApply, Octaform.validator);
     }).toThrow(errorMSG);
   });
 
   test('Test: Should receive empty field', () => {
-    const isValid = Rules.apply(undefined, octaform.validator);
+    const isValid = Rules.apply(undefined, Octaform.validator);
     expect(isValid).toEqual({ 
       field: '', 
       messages: [],
@@ -90,7 +88,7 @@ describe('Rules :: Rules', () => {
 
   test('Test: Should rules be empty', () => {
     MockToApply.rules = undefined;
-    const isValid = Rules.apply(MockToApply, octaform.validator);
-    expect(isValid).toEqual(MockToResult);
+    const isValid = Rules.apply(MockToApply, Octaform.validator);
+    expect(isValid).toEqual(ExpectedMock);
   });
 });

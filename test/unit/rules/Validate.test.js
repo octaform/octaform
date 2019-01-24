@@ -8,8 +8,7 @@ import domHelper from '../../../src/helpers/dom';
 
 dom.add('./test/unit/__templates/fields.html');
 
-const octaform = new Octaform();
-octaform.validator.add(Additionais);
+Octaform.validator.add(Additionais);
 
 const mockSchema = {
   firstName: {
@@ -30,12 +29,11 @@ const messageSchema = (field, messages) => {
   };
 };
 
-
 describe('Validate :: Index', () => {
   const field = domHelper('firstName');
   
   test('Test: Shouldn\'t have any validation', () => {
-    const validation = octaform.validateAll();
+    const validation = Octaform.validateAll();
     expect(validation).toHaveLength(0);
   });
 
@@ -45,7 +43,7 @@ describe('Validate :: Index', () => {
       'Please enter at least 4 characters',
     ]);
 
-    const validation = octaform.validateAll(mockSchema);
+    const validation = Octaform.validateAll(mockSchema);
 
     expect(validation).toHaveLength(1);
     expect(validation).toContainEqual(expectedObject);
@@ -58,7 +56,7 @@ describe('Validate :: Index', () => {
     ]);
 
     delete mockSchema.firstName.messages.required;
-    const validation = octaform.validateAll(mockSchema);
+    const validation = Octaform.validateAll(mockSchema);
 
     expect(validation).toHaveLength(1);
     expect(validation).toContainEqual(expectedObject);
@@ -66,7 +64,7 @@ describe('Validate :: Index', () => {
 
   test('Test: Should firstName pass all rules of validation', () => {
     field[0].value = 'João';
-    const validation = octaform.validateAll(mockSchema);
+    const validation = Octaform.validateAll(mockSchema);
     expect(validation).toHaveLength(0);
   });
 
@@ -77,7 +75,7 @@ describe('Validate :: Index', () => {
       'This field is required',
     ]);
 
-    const validation = octaform.validateAll({
+    const validation = Octaform.validateAll({
       firstName: 'required',
     });
 
@@ -93,7 +91,7 @@ describe('Validate :: Index', () => {
       'Please enter at least 3 characters',
     ]);
 
-    const validation = octaform.validateAll({
+    const validation = Octaform.validateAll({
       firstName: {
         rules: ['required', 'minlength:3'],
       },
@@ -104,7 +102,7 @@ describe('Validate :: Index', () => {
   });
 
   test('Test: Shouldn\'t validate any field without rules as object', () => {
-    const validation = octaform.validateAll({
+    const validation = Octaform.validateAll({
       firstName: {
         rules: 'required',
       },
@@ -114,14 +112,14 @@ describe('Validate :: Index', () => {
   });
 
   test('Test: Shouldn\'t validate firstName with empty rules', () => {
-    const validation = octaform.validateAll({ firstName: {} });
+    const validation = Octaform.validateAll({ firstName: {} });
     expect(validation).toHaveLength(0);
   });
 
   test('Test: Should throw an error that field test doesn\'t exists', () => {
     const message = ReplaceActions.message.error(MESSAGES.CORE.field, 'test');
 
-    expect(() => octaform.validateAll({ 
+    expect(() => Octaform.validateAll({ 
       test: 'required',
     })).toThrowError(message);
   });
@@ -130,7 +128,7 @@ describe('Validate :: Index', () => {
     const message = ReplaceActions.message.error(MESSAGES.CORE.entry, 'firstName');
 
     expect(() => {
-      octaform.validateAll({
+      Octaform.validateAll({
         firstName: [],
       });
     }).toThrowError(message);
