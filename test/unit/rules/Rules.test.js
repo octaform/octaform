@@ -1,7 +1,10 @@
 import Rules from '../../../src/rules/Rules';
 import MessageActions from '../../../src/actions/MessageActions';
 import ReplaceActions from '../../../src/actions/ReplaceActions';
-import Additionais from '../../../../octaform-additional/src';
+
+import require from '../_validations/require.validate';
+import minlength from '../_validations/minlength.validate';
+
 import Octaform from '../../../src';
 
 import dom from '../__helpers/dom';
@@ -25,7 +28,10 @@ const MockToApply = {
   value: '',
 };
 
-Octaform.validator.add(Additionais);
+Octaform.validator.add([
+  require,
+  minlength
+]);
 
 describe('Rules :: Rules', () => {
   test('Test: Should field be invalid', () => {
