@@ -10,10 +10,6 @@ cache:
   directories:
     - "node_modules"
 
-branches:
-  only:
-    - master
-
 install:
   - npm i -g makeshift && makeshift -s @bcoe -r registry.npmjs.org
   - npm install
@@ -32,3 +28,4 @@ deploy:
   api_key: $NPM_TOKEN
   on:
     tags: true
+    branch: master

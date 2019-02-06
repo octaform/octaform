@@ -1,4 +1,3 @@
-import Additionais from '../../../../octaform-additional/src';
 import Octaform from '../../../src';
 import MESSAGES from '../../../src/constants/messages';
 import ReplaceActions from '../../../src/actions/ReplaceActions';
@@ -6,9 +5,15 @@ import ReplaceActions from '../../../src/actions/ReplaceActions';
 import dom from '../__helpers/dom';
 import domHelper from '../../../src/helpers/dom';
 
+import require from '../_validations/require.validate';
+import minlength from '../_validations/minlength.validate';
+
 dom.add('./test/unit/__templates/fields.html');
 
-Octaform.validator.add(Additionais);
+Octaform.validator.add([
+  require,
+  minlength
+]);
 
 const mockSchema = {
   firstName: {
