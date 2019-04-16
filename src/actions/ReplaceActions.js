@@ -1,7 +1,7 @@
 import PATTERNS from '../constants/patterns';
 import { spreadList } from '../utils/util-params';
 import { get } from '../utils/util-object';
-import { isNumber, isBoolean, isString, isArray, isObject } from '../utils/util-types';
+import { isArray, isObject } from '../utils/util-types';
 
 const ReplaceActions = {
   message: {

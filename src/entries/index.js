@@ -1,6 +1,6 @@
-import stringEntry from './stringEntry';
-import objectEntry from './objectEntry';
-import arrayEntry from './arrayEntry';
+import stringEntry from './StringEntry';
+import objectEntry from './ObjectEntry';
+import arrayEntry from './ArrayEntry';
 
 export {
   stringEntry,
