@@ -2,13 +2,13 @@ import Rules from '../../../src/rules/Rules';
 import MessageActions from '../../../src/actions/MessageActions';
 import ReplaceActions from '../../../src/actions/ReplaceActions';
 
-import require from '../_validations/require.validate';
-import minlength from '../_validations/minlength.validate';
+import require from '../__validations/require.validate';
+import minlength from '../__validations/minlength.validate';
 
 import Octaform from '../../../src';
 
 import dom from '../__helpers/dom';
-import domHelper from '../../../src/helpers/dom';
+import { $ } from '../../../src/utils/util-dom';
 
 dom.add('./test/unit/__templates/fields.html');
 
@@ -24,7 +24,7 @@ const MockToApply = {
   },
   messages: MessageActions.getAll(),
   selector: 'firstName',
-  element: domHelper('firstName'),
+  element: $('firstName'),
   value: '',
 };
 
@@ -51,7 +51,25 @@ describe('Rules :: Rules', () => {
     expect(isValid).toEqual(ExpectedMock);
   });
 
+  test('Test: Shouldn\'t be a valid parameter based on paramType', () => {
+    MockToApply.rules.required = {};
+
+    const errorMSG = ReplaceActions.message.error(
+      MockToApply.messages.core.paramType,
+      {
+        fieldName: MockToApply.selector,
+        validation: 'required',
+        paramType: Octaform.validator.required.paramType.name,
+      }
+    );
+
+    expect(() => {
+      Rules.apply(MockToApply, Octaform.validator);
+    }).toThrow(errorMSG);
+  });
+
   test('Test: Should value of field be valid', () => {
+    MockToApply.rules.required = true;
     MockToApply.value = 'abcd';
     ExpectedMock.messages = [];
 
@@ -92,9 +110,44 @@ describe('Rules :: Rules', () => {
     }).toThrow(errorMSG);
   });
 
+  test('Test: Shouldn\'t validate when field has not value', () => {
+    const { messages, rules } = MockToApply;
+
+    MockToApply.value = '123';
+
+    ExpectedMock.messages.push(
+      ReplaceActions.message.validation(
+        messages.validator.minlength,
+        rules.minlength,
+      ),
+    );
+
+    delete rules.required;
+    const isValid = Rules.apply(MockToApply, Octaform.validator);
+    expect(isValid.messages).toHaveLength(1);
+    expect(isValid.messages[0]).toEqual(ExpectedMock.messages[0]);
+  });
+
   test('Test: Should rules be empty', () => {
-    MockToApply.rules = undefined;
+    MockToApply.rules = null;
+    ExpectedMock.messages = [];
+
     const isValid = Rules.apply(MockToApply, Octaform.validator);
     expect(isValid).toEqual(ExpectedMock);
+  });
+
+  test('Test: Should not have a validation that was defined', () => {
+    MockToApply.rules = {
+      invalidValidation: true,
+    };
+
+    const errorMSG = ReplaceActions.message.error(
+      MockToApply.messages.core.undefined,
+      'invalidValidation',
+    );
+
+    expect(() => {
+      Rules.apply(MockToApply, Octaform.validator);
+    }).toThrow(errorMSG);
   });
 });

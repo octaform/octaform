@@ -4,7 +4,7 @@ import MESSAGES from '../../../src/constants/messages';
 describe('Actions :: ReplaceActions', () => {
   test('Test: .message.error(msg = "", ...args) :: Check replace value', () => {
     const replacedText = ReplaceActions.message.error(MESSAGES.CORE.msg, ['email']);
-    const result = 'The validation email has not been defined a message, please check out https://github.com/octaform/octaform#validator-method-octaformvalidatoradd';
+    const result = 'The validation email has not been defined a message, please check out https://github.com/octaform/octaform#validator-method-octaformvalidatoraddarrayobject';
     expect(replacedText).toEqual(result);
   });
 
@@ -52,9 +52,33 @@ describe('Actions :: ReplaceActions', () => {
     expect(replacedText).toEqual(result);
   });
 
+  test('Test: .message.validation(msg, params) :: Check replace spread string with custom separator', () => {
+    const msg = 'Please choose a file with a valid extension: (...{ - })';
+    const params = ['png', 'jpg'];
+    const result = 'Please choose a file with a valid extension: (png - jpg)';
+    const replacedText = ReplaceActions.message.validation(msg, params);
+    expect(replacedText).toEqual(result);
+  });
+
   test('Test: .message.validation(msg, params) :: Check without params', () => {
     const msg = 'email is required';
     const replacedText = ReplaceActions.message.validation(msg, true);
     expect(replacedText).toEqual(msg);
+  });
+
+  test('Test: .message.validation(msg, params) :: Check with param', () => {
+    const msg = 'My name is {name}';
+    const replacedText = ReplaceActions.message.validation(msg, 'Greg');
+    expect(replacedText).toEqual('My name is Greg');
+  });
+
+  test('Test: .message.validation(msg, params) :: Check with undefined message', () => {
+    const replacedText = ReplaceActions.message.validation(undefined, 'Greg');
+    expect(replacedText).toEqual('');
+  });
+
+  test('Test: .message.validation(msg, params) :: Check with undefined params', () => {
+    const replacedText = ReplaceActions.message.validation('My name is {name}', undefined);
+    expect(replacedText).toEqual('My name is {name}');
   });
 });

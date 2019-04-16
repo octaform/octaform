@@ -1,13 +1,13 @@
-import paramsUtils from '../utils/paramsUtils';
+import { shortStringValidation } from '../utils/util-params';
 import rule from '../models/rule';
 
 // extractRulesFromString
-const StringEntry = (string) => {
-  const rules = paramsUtils.get.shortStringValidation(string);
-  return rule.get({ 
+const stringEntry = (string, validations) => {
+  const rules = shortStringValidation(string, validations);
+  return rule.get({
     messages: {},
     rules,
   });
 };
 
-export default StringEntry;
+export default stringEntry;

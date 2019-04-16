@@ -1,7 +1,7 @@
 import ErrorActions from './ErrorActions';
 import MessageActions from './MessageActions';
-import Helpers from '../helpers';
 import State from '../states';
+import { isArray, isString, isFunction } from '../utils/util-types';
 
 const ValidateActions = {
   getAll() {
@@ -11,9 +11,17 @@ const ValidateActions = {
     State.validations[name] = fn;
   },
   add(listOfValidations) {
-    if (Helpers.types.isArray(listOfValidations)) {
-      listOfValidations.forEach(({ name, fn, message }) => {
-        const hasParams = (Helpers.types.isString(name) && Helpers.types.isFunction(fn) && Helpers.types.isString(message));
+    if (isArray(listOfValidations)) {
+      listOfValidations.forEach(({ name, message, paramType, fn }) => {
+        const hasParams = (
+          isString(name) 
+            && isFunction(fn) 
+            && isString(message)
+        );
+
+        if (hasParams && paramType) {
+          fn.paramType = paramType;
+        }
 
         if (hasParams && message) {
           MessageActions.set(name, message);

@@ -1,33 +1,53 @@
 import PATTERNS from '../constants/patterns';
-import paramsUtils from '../utils/paramsUtils';
-import Helpers from '../helpers';
+import { spreadList } from '../utils/util-params';
+import { get } from '../utils/util-object';
+import { isNumber, isBoolean, isString, isArray, isObject } from '../utils/util-types';
 
 const ReplaceActions = {
   message: {
     error(msg = '', ...args) {
       const params = (msg.match(PATTERNS.MESSAGE.ERROR) || []);
-      return params.reduce((acc, current, index) => acc.replace(current, args[index]), msg);
+      const hasMappedKeys = isObject(args[0]);
+
+      return params.reduce((acc, current, index) => {
+        let text = '';
+
+        if (hasMappedKeys) {
+          const keys = args[0];
+          text = keys[current.replace(/#{(.*?)}/g, '$1')];
+        } else {
+          text = args[index];
+        }
+        
+        return acc.replace(current, text);
+      }, msg);
     },
-    validation(msg, params){
+    validation(msg = '', params){
       const searchItems = msg.match(PATTERNS.MESSAGE.PARAMS);
-      const listParams = paramsUtils.get.spreadList(msg);
+      const spreadParams = spreadList(msg);
 
-      if (listParams){
-        const text = params.join(listParams[1] || ', ');
-        msg = msg.replace(listParams[0], text);
+      
+      if (spreadParams && spreadParams.length){
+        const text = params.join(spreadParams[1] || ', ');
+        msg = msg.replace(spreadParams[0], text);
       }
-
+      
       if (searchItems) {
         return searchItems.reduce((acc, current) => {
           const pureKey = current.replace(PATTERNS.MESSAGE.BRACES, '');
+          let map = params || '';
+          
+          if (map) {
+            if (isArray(params)) {
+              map = params[pureKey];
+            } else if (isObject(params)) {
+              map = get(params, pureKey, current);
+            }
 
-          const map = {
-            [Helpers.types.isString(params) || Helpers.types.isNumber(params) || Helpers.types.isBoolean(params)]: params,
-            [Helpers.types.isArray(params)]: params[pureKey],
-            [Helpers.types.isObject(params)]: Helpers.get(params, pureKey, current),
-          };
-
-          return acc.replace(current, (map.true || ''));
+            return acc.replace(current, map);
+          }
+          
+          return acc;
         }, msg);
       }
 

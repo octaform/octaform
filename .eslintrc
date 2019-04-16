@@ -32,7 +32,12 @@
     "import/no-named-as-default-member": 0,
     "max-len": 0,
     "guard-for-in": 0,
-    "no-restricted-syntax": 0
+    "no-restricted-syntax": 0,
+    "import/no-dynamic-require": 0,
+    "array-callback-return": 0,
+    "no-void": 0,
+    "default-case": 0,
+    "semi": 0
   },
   "globals": {
     "document": true,

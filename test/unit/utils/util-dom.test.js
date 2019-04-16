@@ -1,32 +1,32 @@
 
 import dom from '../__helpers/dom';
-import domHelper from '../../../src/helpers/dom';
+import { $ } from '../../../src/utils/util-dom';
 
 dom.add('./test/unit/__templates/fields.html');
 
 describe('Helpers :: DomHelper', () => {
   test('Test: .dom(selector) :: Find element by name', () => {
-    const field = domHelper('email');
+    const field = $('email');
     expect(field).toHaveLength(1);
   });
 
   test('Test: .dom(selector) :: Find element by class', () => {
-    const field = domHelper('firstName');
+    const field = $('firstName');
     expect(field).toHaveLength(1);
   });
 
   test('Test: .dom(selector) :: Find element by id', () => {
-    const field = domHelper('lastName');
+    const field = $('lastName');
     expect(field).toHaveLength(1);
   });
   
   test('Test: .dom(selector) :: Find element by whatever', () => {
-    const field = domHelper("[data-type='date']");
+    const field = $("[data-type='date']");
     expect(field).toHaveLength(1);
   });
 
   test('Test: .dom(selector) :: Element not found', () => {
-    const field = domHelper('notFound');
+    const field = $('notFound');
     expect(field).toHaveLength(0);
   });
 });

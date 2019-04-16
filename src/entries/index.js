@@ -1,13 +1,9 @@
-import StringEntry from './StringEntry';
-import ObjectEntry from './ObjectEntry';
-import ArrayEntry from './ArrayEntry';
+import stringEntry from './stringEntry';
+import objectEntry from './objectEntry';
+import arrayEntry from './arrayEntry';
 
-export const entryType = {
-  field: {
-    object: ObjectEntry,
-    string: StringEntry,
-  },
-  rules: {
-    array: ArrayEntry,
-  },
+export {
+  stringEntry,
+  objectEntry,
+  arrayEntry,
 };

@@ -3,10 +3,10 @@ import MESSAGES from '../../../src/constants/messages';
 import ReplaceActions from '../../../src/actions/ReplaceActions';
 
 import dom from '../__helpers/dom';
-import domHelper from '../../../src/helpers/dom';
+import { $ } from '../../../src/utils/util-dom';
 
-import require from '../_validations/require.validate';
-import minlength from '../_validations/minlength.validate';
+import require from '../__validations/require.validate';
+import minlength from '../__validations/minlength.validate';
 
 dom.add('./test/unit/__templates/fields.html');
 
@@ -35,7 +35,7 @@ const messageSchema = (field, messages) => {
 };
 
 describe('Validate :: Index', () => {
-  const field = domHelper('firstName');
+  const field = $('firstName');
   
   test('Test: Shouldn\'t have any validation', () => {
     const validation = Octaform.validateAll();

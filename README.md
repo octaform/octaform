@@ -46,8 +46,13 @@ Create a file that will be your validation (e.g. `email.validation.js`):
 
 ```js
 module.exports = {
-  name: 'email', // (Required) The name will be used on validation schema
-  message: 'Please enter a valid email address', // (Required) User-friendly error message
+  // (Required) The name will be used on validation schema
+  name: 'email', 
+  // (Required) User-friendly error message
+  message: 'Please enter a valid email address', 
+  // Parameter validator accept JS types (e.g. String/Boolean/Function/...)
+  paramType: String,
+  // Validation function
   fn: (value, element, param) => {
     /**
      * (Required) - Validation function used to validate
@@ -57,10 +62,9 @@ module.exports = {
      * @return {Boolean} Return true when the field has a valid value and false when is invalid
      */
 
-    // Validation logic here
-    const isValid = (true || false);
-
-    return isValid;
+    // Validation logic goes here and must return a boolean value
+    
+    return (true || false);
   },
 };
 ```

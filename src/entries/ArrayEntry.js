@@ -1,13 +1,12 @@
-import paramsUtils from '../utils/paramsUtils';
+import { shortStringValidation } from '../utils/util-params';
 
 // extractRulesFromArray
-const ArrayEntry = (field = []) => {
-  const rules = field.reduce((acc, current) => {
-    const rules = paramsUtils.get.shortStringValidation(current);
+const arrayEntry = (field = [], validations = {}) => {
+  return field.reduce((acc, current) => {
+    const rules = shortStringValidation(current, validations);
+    // validations
     return { ...acc, ...rules };
   }, {});
-
-  return rules;
 };
 
-export default ArrayEntry;
+export default arrayEntry;

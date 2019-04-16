@@ -1,6 +1,6 @@
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const merge = require('webpack-merge');
-const webpackBase = require('./config.base');
+const webpackBase = require('./base.config');
 const glob = require('glob');
 const fs = require('fs');
 
@@ -15,14 +15,6 @@ markdown.forEach((md) => {
 
 module.exports = merge(webpackBase, {
   devtool: 'inline-source-map',
-  module: {
-    rules: [{
-      test: /\.js$/,
-      use: [
-        'eslint-loader',
-      ],
-    }],
-  },
   plugins: [
     new CircularDependencyPlugin({
       exclude: /node_modules/,

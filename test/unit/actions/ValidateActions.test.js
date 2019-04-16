@@ -51,6 +51,18 @@ describe('Actions :: ValidateActions', () => {
     }).toThrowError(MESSAGES.CORE.add);
   });
 
+  test('Test: .add([{ name, message, paramType, fn }]) :: Defined paramType', () => {    
+    ValidateActions.add([{
+      name: 'email',
+      message: 'email field is required',
+      paramType: String,
+      fn: value => value,
+    }]);
+
+    const validations = ValidateActions.getAll();
+    expect(validations.email.paramType).toBeInstanceOf(Function);
+  });
+
   test('Test: .getAll() :: Is defined all validations', () => {
     const definedValidations = ValidateActions.getAll();
     expect(definedValidations.add).toBeDefined();
