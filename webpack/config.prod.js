@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const npmConfig = require('./npm.config');
+const npmConfig = require('./config.npm');
 const GenerateJsonPlugin = require('generate-json-webpack-plugin');
-const webpackBase = require('./base.config');
+const webpackBase = require('./config.base');
 const banner = require('./banner');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 

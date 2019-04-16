@@ -1,6 +1,6 @@
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const merge = require('webpack-merge');
-const webpackBase = require('./base.config');
+const webpackBase = require('./config.base');
 const glob = require('glob');
 const fs = require('fs');
 

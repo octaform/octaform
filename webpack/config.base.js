@@ -24,8 +24,5 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       names: ['index'],
     }),
-    new webpack.EnvironmentPlugin([
-      'NODE_ENV',
-    ]),
   ],
 };
