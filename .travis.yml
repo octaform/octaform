@@ -9,10 +9,6 @@ env:
 cache:
   directories:
     - "node_modules"
-
-branches:
-  only:
-  - master
   
 install:
   - npm i -g makeshift && makeshift -s @bcoe -r registry.npmjs.org
@@ -32,5 +28,6 @@ deploy:
   email: $NPM_EMAIL
   api_key: $NPM_TOKEN
   on:
+    branch: master
     tags: true
     repo: octaform/octaform
