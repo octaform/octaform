@@ -5,7 +5,7 @@ describe('Index :: Octaform', () => {
     expect(Octaform.validator).toBeDefined();
   });
 
-  test('Test: ValidateAll Instance', () => {
-    expect(Octaform.validateAll).toBeDefined();
+  test('Test: Validate Instance', () => {
+    expect(Octaform.validate).toBeDefined();
   });
 });

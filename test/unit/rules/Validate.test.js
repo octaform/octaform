@@ -12,7 +12,7 @@ dom.add('./test/unit/__templates/fields.html');
 
 Octaform.validator.add([
   require,
-  minlength
+  minlength,
 ]);
 
 const mockSchema = {
@@ -27,10 +27,11 @@ const mockSchema = {
   },
 };
 
-const messageSchema = (field, messages) => {
+const messageSchema = (field, messages, rules) => {
   return {
     field,
     messages,
+    rules,
   };
 };
 
@@ -38,7 +39,7 @@ describe('Validate :: Index', () => {
   const field = $('firstName');
   
   test('Test: Shouldn\'t have any validation', () => {
-    const validation = Octaform.validateAll();
+    const validation = Octaform.validate();
     expect(validation).toHaveLength(0);
   });
 
@@ -46,9 +47,12 @@ describe('Validate :: Index', () => {
     const expectedObject = messageSchema('firstName', [
       'First Name is required',
       'Please enter at least 4 characters',
-    ]);
+    ], { 
+      required: 'First Name is required',
+      minlength: 'Please enter at least 4 characters'
+    });
 
-    const validation = Octaform.validateAll(mockSchema);
+    const validation = Octaform.validate(mockSchema);
 
     expect(validation).toHaveLength(1);
     expect(validation).toContainEqual(expectedObject);
@@ -58,10 +62,13 @@ describe('Validate :: Index', () => {
     const expectedObject = messageSchema('firstName', [
       'This field is required',
       'Please enter at least 4 characters',
-    ]);
+    ], { 
+      required: 'This field is required',
+      minlength: 'Please enter at least 4 characters',
+    });
 
     delete mockSchema.firstName.messages.required;
-    const validation = Octaform.validateAll(mockSchema);
+    const validation = Octaform.validate(mockSchema);
 
     expect(validation).toHaveLength(1);
     expect(validation).toContainEqual(expectedObject);
@@ -69,7 +76,7 @@ describe('Validate :: Index', () => {
 
   test('Test: Should firstName pass all rules of validation', () => {
     field[0].value = 'João';
-    const validation = Octaform.validateAll(mockSchema);
+    const validation = Octaform.validate(mockSchema);
     expect(validation).toHaveLength(0);
   });
 
@@ -78,9 +85,9 @@ describe('Validate :: Index', () => {
     
     const expectedObject = messageSchema('firstName', [
       'This field is required',
-    ]);
+    ], { required: 'This field is required' });
 
-    const validation = Octaform.validateAll({
+    const validation = Octaform.validate({
       firstName: 'required',
     });
 
@@ -94,9 +101,12 @@ describe('Validate :: Index', () => {
     const expectedObject = messageSchema('firstName', [
       'This field is required',
       'Please enter at least 3 characters',
-    ]);
+    ], { 
+      required: 'This field is required',
+      minlength: 'Please enter at least 3 characters',
+    });
 
-    const validation = Octaform.validateAll({
+    const validation = Octaform.validate({
       firstName: {
         rules: ['required', 'minlength:3'],
       },
@@ -107,7 +117,7 @@ describe('Validate :: Index', () => {
   });
 
   test('Test: Shouldn\'t validate any field without rules as object', () => {
-    const validation = Octaform.validateAll({
+    const validation = Octaform.validate({
       firstName: {
         rules: 'required',
       },
@@ -117,14 +127,14 @@ describe('Validate :: Index', () => {
   });
 
   test('Test: Shouldn\'t validate firstName with empty rules', () => {
-    const validation = Octaform.validateAll({ firstName: {} });
+    const validation = Octaform.validate({ firstName: {} });
     expect(validation).toHaveLength(0);
   });
 
   test('Test: Should throw an error that field test doesn\'t exists', () => {
     const message = ReplaceActions.message.error(MESSAGES.CORE.field, 'test');
 
-    expect(() => Octaform.validateAll({ 
+    expect(() => Octaform.validate({ 
       test: 'required',
     })).toThrowError(message);
   });
@@ -133,7 +143,7 @@ describe('Validate :: Index', () => {
     const message = ReplaceActions.message.error(MESSAGES.CORE.entry, 'firstName');
 
     expect(() => {
-      Octaform.validateAll({
+      Octaform.validate({
         firstName: [],
       });
     }).toThrowError(message);

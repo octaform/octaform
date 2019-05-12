@@ -6,6 +6,7 @@ const Rules = {
     const fieldMap = {
       field: (field.selector || ''),
       messages: [],
+      rules: {},
     };
 
     if (fieldMap.field){
@@ -38,6 +39,7 @@ const Rules = {
               );
               
               fieldMap.messages.push(result);
+              fieldMap.rules[key] = result;
             }
           } else {
             ErrorActions.set('undefined', key);

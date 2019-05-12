@@ -47,6 +47,11 @@ describe('Rules :: Rules', () => {
       minLengthMSG,
     );
 
+    ExpectedMock.rules = {
+      minlength: 'Please enter at least 4 characters', 
+      required: 'This field is required'
+    }
+
     const isValid = Rules.apply(MockToApply, Octaform.validator);
     expect(isValid).toEqual(ExpectedMock);
   });
@@ -72,6 +77,7 @@ describe('Rules :: Rules', () => {
     MockToApply.rules.required = true;
     MockToApply.value = 'abcd';
     ExpectedMock.messages = [];
+    ExpectedMock.rules = {};
 
     const isValid = Rules.apply(MockToApply, Octaform.validator);
     expect(isValid).toEqual(ExpectedMock);
@@ -93,8 +99,9 @@ describe('Rules :: Rules', () => {
   test('Test: Should receive empty field', () => {
     const isValid = Rules.apply(undefined, Octaform.validator);
     expect(isValid).toEqual({ 
-      field: '', 
+      field: '',
       messages: [],
+      rules: {},
     });
   });
 

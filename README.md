@@ -31,7 +31,7 @@ Octaform.validator.add(
 );
 
 // Call the validations for all fields specified on the schema below
-Octaform.validateAll({ 
+Octaform.validate({ 
   // Write your schema here
 })
 ```
@@ -69,8 +69,8 @@ module.exports = {
 };
 ```
 
-## Validator method: `Octaform.validateAll(Schema)`
-The method `validateAll` is used to call the validations based on a schema. Check out an example of the schema below:
+## Validator method: `Octaform.validate(Schema)`
+The method `validate` is used to call the validations based in a schema. Check out an schema example below:
 
 ```js
 const Schema = {
