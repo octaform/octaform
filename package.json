@@ -23,12 +23,13 @@
     "vanilla"
   ],
   "scripts": {
-    "start": "webpack --watch",
+    "start": "webpack --config ./webpack/config.dev.js --watch",
     "test:dev": "jest -c ./test/jest/config.dev.json --colors --watchAll",
     "test:prod": "jest -c ./test/jest/config.prod.json --colors",
     "build:prod": "npm run clean && webpack -p --progress --config ./webpack/config.prod.js",
     "build:dev": "npm run clean && webpack --config ./webpack/config.dev.js",
     "clean": "rimraf dist",
+    "jest": "node_modules/.bin/jest",
     "webpack": "node_modules/.bin/webpack"
   },
   "repository": {
