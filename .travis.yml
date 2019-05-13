@@ -2,13 +2,13 @@ language: node_js
 node_js:
   - 10.11.0
 
-dist: trusty
+cache: npm
 
 env:
   global:
     - NODE_ENV=$APP_ENV
   
-install:
+before_script:
   - npm i -g makeshift && makeshift -s @bcoe -r registry.npmjs.org
   - npm install
 
