@@ -10,7 +10,7 @@ env:
   
 install:
   - npm i -g makeshift && makeshift -s @bcoe -r registry.npmjs.org
-  - npm ci
+  - npm install
 
 script:
   - npm run test:prod
