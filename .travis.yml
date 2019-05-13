@@ -2,17 +2,15 @@ language: node_js
 node_js:
   - 10.11.0
 
+dist: trusty
+
 env:
   global:
     - NODE_ENV=$APP_ENV
-
-cache:
-  directories:
-    - "node_modules"
   
 install:
   - npm i -g makeshift && makeshift -s @bcoe -r registry.npmjs.org
-  - npm install
+  - npm ci
 
 script:
   - npm run test:prod
