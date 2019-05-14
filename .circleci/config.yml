@@ -51,22 +51,22 @@ jobs:
     steps:
       - checkout
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      - run: npm publish dist/
+      - run: 
+          name: Publishing to NPM
+          command: npm publish dist/
 
 workflows:
   version: 2
   # Build and test
-  build_and_test:
+  build_and_publish:
     jobs:
+      # Build application
       - build:
           filters:
             branches:
               only: master
-
-  # Build/test and publish
-  tagged-build:
-    jobs:
-      - build
+      
+      # Publish to NPM
       - publish:
           filters:
             branches:
