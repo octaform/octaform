@@ -46,7 +46,10 @@ jobs:
           paths: ./dist
   
   publish:
+    docker:
+      - image: circleci/node:10.11.0
     steps:
+      - checkout
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
       - run: npm publish dist/
 
