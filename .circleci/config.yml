@@ -1,0 +1,70 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/tmp
+    docker:
+      - image: circleci/node:10.11.0
+    
+    environment:
+      NODE_ENV: ${APP_ENV}
+
+    steps:
+      - checkout
+      
+      # Log the current branch
+      - run:
+          name: Show current branch
+          command: echo ${CIRCLE_BRANCH}
+      
+      # Restore local dependencies from cache
+      - restore_cache:
+          key: v1-dependency-cache-{{ checksum "package.json" }}
+      
+      # Install project dependencies
+      - run:
+          name: Install local dependencies
+          command: npm install
+      
+      # Cache local dependencies if they don't exist
+      - save_cache:
+          key: v1-dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      
+      # Test the source code
+      - run:
+          name: Testing
+          command: npm run test:prod
+
+      # Test the source code
+      - run:
+          name: Building
+          command: npm run build:prod
+      
+      - persist_to_workspace:
+          root: .
+          paths: ./dist
+  
+  publish:
+    steps:
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+      - run: npm publish dist/
+
+workflows:
+  version: 2
+  # Build and test
+  build_and_test:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
+
+  # Build/test and publish
+  tagged-build:
+    jobs:
+      - build
+      - publish:
+          filters:
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
