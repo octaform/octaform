@@ -1,57 +1,75 @@
 version: 2
-jobs:
-  build:
-    working_directory: ~/tmp
-    docker:
-      - image: circleci/node:10.11.0
-    
-    environment:
-      NODE_ENV: ${APP_ENV}
 
+defaults: &defaults
+  working_directory: ~/tmp
+  docker:
+    - image: circleci/node:10.11.0
+
+  environment:
+    NODE_ENV: ${APP_ENV}
+
+jobs:
+  install_dependencies:
+    <<: *defaults
     steps:
       - checkout
-      
+
       # Log the current branch
       - run:
           name: Show current branch
           command: echo ${CIRCLE_BRANCH}
-      
+
       # Restore local dependencies from cache
       - restore_cache:
           key: v1-dependency-cache-{{ checksum "package.json" }}
-      
+
       # Install project dependencies
       - run:
           name: Install local dependencies
           command: npm install
-      
+
       # Cache local dependencies if they don't exist
       - save_cache:
           key: v1-dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
-      
-      # Test the source code
-      - run:
-          name: Testing
-          command: npm run test:prod
 
-      # Test the source code
-      - run:
-          name: Building
-          command: npm run build:prod
-      
       - persist_to_workspace:
           root: .
-          paths: ./dist
-  
-  publish:
-    docker:
-      - image: circleci/node:10.11.0
+          paths: ~/tmp
+
+  build_prod:
+      <<: *defaults
+      steps:
+        # Restore local dependencies from cache
+        - restore_cache:
+            key: v1-dependency-cache-{{ checksum "package.json" }}
+
+        # Test the source code
+        - run:
+            name: Testing
+            command: npm run test:prod
+
+        # Test the source code
+        - run:
+            name: Building
+            command: npm run build:prod
+
+        - persist_to_workspace:
+            root: .
+            paths: ~/tmp
+
+  deploy:
+    <<: *defaults
     steps:
-      - checkout
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      - run: 
+      - attach_workspace:
+          at: ~/tmp
+
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ./.npmrc
+
+      - run:
           name: Publishing to NPM
           command: npm publish dist/
 
@@ -61,13 +79,17 @@ workflows:
   build_and_publish:
     jobs:
       # Build application
-      - build:
+      - install_dependencies:
           filters:
             branches:
               only: master
-      
+      - build_prod:
+          filters:
+            branches:
+              only: master
+
       # Publish to NPM
-      - publish:
+      - deploy:
           filters:
             branches:
               ignore: /.*/
