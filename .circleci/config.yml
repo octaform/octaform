@@ -50,24 +50,6 @@ jobs:
           root: ~/tmp
           paths: .
 
-  store_artifactory:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/tmp
-
-      - run:
-          name: Install jFrog CLI
-          command: curl -fL https://getcli.jfrog.io | sh
-
-      - run: mkdir ./artifactory
-      - run: zip -r artifactory/dist-$CIRCLE_BUILD_NUM.zip dist/
-
-      - run: ./jfrog rt config --url $ARTIFACTORY_URL --user $ARTIFACTORY_USER --apikey $ARTIFACTORY_APIKEY --interactive=false
-      - run: ./jfrog rt u ./artifactory/dist-*.zip $ARTIFACTORY_REPO --build-name=octaform-artifact --build-number=$CIRCLE_BUILD_NUM
-      - run: ./jfrog rt bce octaform-artifact $CIRCLE_BUILD_NUM  # collects all environment variables on the agent
-      - run: ./jfrog rt bp octaform-artifact $CIRCLE_BUILD_NUM  # attaches ^^ to the build in artifactory
-
   deploy:
     <<: *defaults
     steps:
@@ -89,12 +71,6 @@ workflows:
     jobs:
       # Build application
       - build:
-          filters:
-            branches:
-              only: master
-      - store_artifactory:
-          requires:
-            - build
           filters:
             branches:
               only: master
