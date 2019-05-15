@@ -50,6 +50,30 @@ jobs:
           root: ~/tmp
           paths: .
 
+  store_artifactory:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/tmp
+
+      - run:
+          name: Install jFrog CLI
+          command: curl -fL https://getcli.jfrog.io | sh
+
+      - run:
+          name: Zip Artifact
+          command: 
+            - mkdir ./artifactory
+            - zip -r artifactory/dist-$CIRCLE_BUILD_NUM.zip dist/
+
+      - run:
+          name: Push to Artifactory
+          command: |
+            ./jfrog rt config --url $ARTIFACTORY_URL --user $ARTIFACTORY_USER --apikey $ARTIFACTORY_APIKEY --interactive=false
+            ./jfrog rt u ./artifactory/dist-$CIRCLE_BUILD_NUM.zip $ARTIFACTORY_REPO --build-name=dist-CIRCLE_BUILD_NUM --build-number=$CIRCLE_BUILD_NUM
+            ./jfrog rt bce dist-CIRCLE_BUILD_NUM $CIRCLE_BUILD_NUM  # collects all environment variables on the agent
+            ./jfrog rt bp dist-CIRCLE_BUILD_NUM $CIRCLE_BUILD_NUM  # attaches ^^ to the build in artifactory
+
   deploy:
     <<: *defaults
     steps:
@@ -74,6 +98,9 @@ workflows:
           filters:
             branches:
               only: master
+      - store_artifactory:
+          requires:
+            - build
 
       # Publish to NPM
       - deploy:
