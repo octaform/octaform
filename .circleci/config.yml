@@ -9,7 +9,7 @@ defaults: &defaults
     NODE_ENV: ${APP_ENV}
 
 jobs:
-  install_dependencies:
+  build:
     <<: *defaults
     steps:
       - checkout
@@ -36,32 +36,19 @@ jobs:
           paths:
             - ./node_modules
 
+      # Test the source code
+      - run:
+          name: Testing
+          command: npm run test:prod
+
+      # Test the source code
+      - run:
+          name: Building
+          command: npm run build:prod
+
       - persist_to_workspace:
           root: ~/tmp
           paths: .
-
-  build_prod:
-      <<: *defaults
-      steps:
-        # Restore local dependencies from cache
-        - restore_cache:
-            keys: 
-              - v1-dependency-cache-{{ checksum "package.json" }}
-              - v1-dependency-
-
-        # Test the source code
-        - run:
-            name: Testing
-            command: npm run test:prod
-
-        # Test the source code
-        - run:
-            name: Building
-            command: npm run build:prod
-
-        - persist_to_workspace:
-            root: ~/tmp
-            paths: .
 
   deploy:
     <<: *defaults
@@ -83,13 +70,7 @@ workflows:
   build_and_publish:
     jobs:
       # Build application
-      - install_dependencies:
-          filters:
-            branches:
-              only: master
-      - build_prod:
-          requires:
-            - install_dependencies
+      - build:
           filters:
             branches:
               only: master
@@ -97,8 +78,7 @@ workflows:
       # Publish to NPM
       - deploy:
           requires:
-            - install_dependencies
-            - build_prod
+            - build
           filters:
             branches:
               ignore: /.*/
