@@ -1,7 +1,7 @@
 version: 2
 
 defaults: &defaults
-  working_directory: ~/repo
+  working_directory: ~/tmp
   docker:
     - image: circleci/node:10.11.0
 
@@ -35,8 +35,8 @@ jobs:
             - ./node_modules
 
       - persist_to_workspace:
-          root: .
-          paths: ~/repo
+          root: /root/tmp
+          paths: .
 
   build_prod:
       <<: *defaults
@@ -56,14 +56,14 @@ jobs:
             command: npm run build:prod
 
         - persist_to_workspace:
-            root: .
-            paths: ~/repo
+          root: /root/tmp
+          paths: .
 
   deploy:
     <<: *defaults
     steps:
       - attach_workspace:
-          at: ~/repo
+          at: ~/tmp
 
       - run:
           name: Authenticate with registry
