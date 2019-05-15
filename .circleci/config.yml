@@ -60,11 +60,8 @@ jobs:
           name: Install jFrog CLI
           command: curl -fL https://getcli.jfrog.io | sh
 
-      - run:
-          name: Zip Artifact
-          command: 
-            - mkdir ./artifactory
-            - zip -r artifactory/dist-$CIRCLE_BUILD_NUM.zip dist/
+      - run: mkdir ./artifactory
+      - run: zip -r artifactory/dist-$CIRCLE_BUILD_NUM.zip dist/
 
       - run:
           name: Push to Artifactory
