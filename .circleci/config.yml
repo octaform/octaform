@@ -60,8 +60,8 @@ jobs:
             command: npm run build:prod
 
         - persist_to_workspace:
-          root: ~/tmp
-          paths: .
+            root: ~/tmp
+            paths: .
 
   deploy:
     <<: *defaults
@@ -88,12 +88,17 @@ workflows:
             branches:
               only: master
       - build_prod:
+          requires:
+            - install_dependencies
           filters:
             branches:
               only: master
 
       # Publish to NPM
       - deploy:
+          requires:
+            - install_dependencies
+            - build_prod
           filters:
             branches:
               ignore: /.*/
