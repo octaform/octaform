@@ -36,32 +36,31 @@ Octaform.validate({
 })
 ```
 
-## Validator method: `Octaform.validator`
-Validator return an object that able you to access all validations that were previously defined in the `.add` method
+## `Octaform.validator`
+Validator returns an object that able you to access all validations previously defined in the `.add` method
 
-## Validator method: `Octaform.validator.add(Array[Object])`
-The method `.add` is used to define the validation that will be used by schema and validate all fields. This method is waiting as parameter an `Array[Object]`. Follow below the example:
+## `Octaform.validator.add()`
+The `.add` is used to define the validation that is used by schema. This method is wait as parameter an `Array[Object]` or `Object`. Follow the example below:
 
-Create a file that will be your validation (e.g. `email.validation.js`):
+Create a validation file `(e.g. email.validation.js)`:
 
 ```js
-module.exports = {
+export default {
   // (Required) The name will be used on validation schema
   name: 'email', 
   // (Required) User-friendly error message
   message: 'Please enter a valid email address', 
   // Parameter validator accept JS types (e.g. String/Boolean/Function/...)
   paramType: String,
-  // Validation function
+  /**
+   * fn (Required): Validation function that is used to validate
+   * @param {string} value - Field value
+   * @param {HTMLElement} element - DOM element
+   * @param {*} param - Get the parameter defined in schema rules (e.g. minlength:3)
+   * 
+   * @return {boolean} Return true when the field has a valid value and false when is invalid
+   */
   fn: (value, element, param) => {
-    /**
-     * (Required) - Validation function used to validate
-     * @param {String} value - Field value
-     * @param {HTMLElement} element - DOM element
-     * @param {*} param - Get the parameter defined in schema rules (e.g. minlength:3)
-     * @return {Boolean} Return true when the field has a valid value and false when is invalid
-     */
-
     // Validation logic goes here and must return a boolean value
     
     return (true || false);
@@ -69,7 +68,7 @@ module.exports = {
 };
 ```
 
-## Validator method: `Octaform.validate(Schema)`
+## `Octaform.validate(Schema)`
 The method `validate` is used to call the validations based in a schema. Check out an schema example below:
 
 ```js
@@ -143,7 +142,7 @@ const Schema = {
 ```
 
 ### Messages: `(Optional)`
-You can define your custom message without using the default validation, for to do it you should define the key `messages` as an `Object` and specify which validation you want to overwrite, follow below the example:
+Can be defined a custom message without using default validation, for it you should define a key `messages` as an `Object` and specify which validation you want to overwrite, follow the example below:
 
 ```js
 const Schema = {
@@ -160,7 +159,7 @@ const Schema = {
 Follow this repository and use our preset validation [https://github.com/octaform/octaform-additional](https://github.com/octaform/octaform-additional), or create your own validation using the [Octaform API](#octaform-api)
 
 ## Demo
-Check out the [demo page](https://octaform.github.io/demo) and see the validations working and have fun!
+Check out the [demo page](https://octaform.github.io) and see the validations working and have fun!
 
 ## Changelog
 [Check out releases](https://github.com/octaform/octaform/releases)
