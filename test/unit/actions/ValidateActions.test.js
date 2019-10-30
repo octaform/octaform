@@ -9,7 +9,7 @@ describe('Actions :: ValidateActions', () => {
     expect(State.validations.email).toBeDefined();
   });
 
-  test('Test: .add([{ name, fn, message }]) :: Defined', () => {
+  test('Test: .add([{ name, fn, message }]) :: Add method is defined', () => {
     const mapper = [{
       name: 'email',
       message: 'email field is required',
@@ -22,13 +22,26 @@ describe('Actions :: ValidateActions', () => {
     expect(State.messages.validator.email).toBeDefined();
   });
 
-  test('Test: .add([{ name, fn, message }]) :: Add param is not a list', () => {
+  test('Test: .add([{ name, fn, message }]) :: Validation defined as object instead', () => {
+    const mapper = {
+      name: 'counter',
+      message: 'counter field is required',
+      fn: () => true,
+    };
+
+    ValidateActions.add(mapper);
+
+    expect(State.validations.counter).toBeDefined();
+    expect(State.messages.validator.counter).toBeDefined();
+  });
+
+  test('Test: .add([{ name, fn, message }]) :: Parameter not a list', () => {
     expect(() => {
       ValidateActions.add('My validation string');
     }).toThrowError(MESSAGES.CORE.add);
   });
 
-  test('Test: .add([{ name, fn, message }]) :: Was not defined a message to validation', () => {
+  test('Test: .add([{ name, fn, message }]) :: Validation message was not defined', () => {
     const replacedText = ReplaceActions.message.error(MESSAGES.CORE.msg, 'email');
     const mapper = [{
       name: 'email',
@@ -40,7 +53,7 @@ describe('Actions :: ValidateActions', () => {
     }).toThrowError(replacedText);
   });
 
-  test('Test: .add([{ name, fn, message }]) :: Was not defined a function to validate', () => {
+  test('Test: .add([{ name, fn, message }]) :: Validation function was not defined', () => {
     const mapper = [{
       name: 'email',
       message: 'email field is required',
@@ -51,7 +64,7 @@ describe('Actions :: ValidateActions', () => {
     }).toThrowError(MESSAGES.CORE.add);
   });
 
-  test('Test: .add([{ name, message, paramType, fn }]) :: Defined paramType', () => {    
+  test('Test: .add([{ name, message, paramType, fn }]) :: Validation paramType is defined', () => {    
     ValidateActions.add([{
       name: 'email',
       message: 'email field is required',
@@ -63,7 +76,7 @@ describe('Actions :: ValidateActions', () => {
     expect(validations.email.paramType).toBeInstanceOf(Function);
   });
 
-  test('Test: .getAll() :: Is defined all validations', () => {
+  test('Test: .getAll() :: All validations is defined', () => {
     const definedValidations = ValidateActions.getAll();
     expect(definedValidations.add).toBeDefined();
     expect(definedValidations.email).toBeDefined();
