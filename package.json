@@ -29,8 +29,10 @@
     "build:prod": "npm run clean && webpack -p --progress --config ./webpack/config.prod.js",
     "build:dev": "npm run clean && webpack --config ./webpack/config.dev.js",
     "clean": "rimraf dist",
+    "yarn": "node_modules/.bin/yarn",
     "jest": "node_modules/.bin/jest",
-    "webpack": "node_modules/.bin/webpack"
+    "webpack": "node_modules/.bin/webpack",
+    "deploy": "yarn install && yarn test:prod && yarn build:prod && npm publish dist/"
   },
   "repository": {
     "type": "git",
@@ -60,6 +62,7 @@
     "rimraf": "^2.6.2",
     "webpack": "^3.11.0",
     "webpack-cli": "^2.0.9",
-    "webpack-merge": "^4.1.2"
+    "webpack-merge": "^4.1.2",
+    "yarn": "^1.19.1"
   }
 }
