@@ -1,11 +1,11 @@
 {
   "name": "octaform",
   "alias": "Octaform",
-  "version": "1.4.1",
-  "description": "Octaform is created to help developers validate forms easy, being completely agnostic to the framework.",
-  "main": "index.js",
+  "version": "1.4.2",
+  "description": "Octaform is designed to help developers easily validate forms, being completely agnostic to the framework.",
+  "main": "src/index.js",
   "homepage": "https://github.com/octaform/octaform#readme",
-  "author": "Christian Fortes",
+  "author": "Octaform",
   "license": "MIT",
   "bugs": "https://github.com/octaform/octaform/issues",
   "keywords": [
