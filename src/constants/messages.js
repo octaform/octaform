@@ -9,11 +9,11 @@ const URL = {
 
 export default {
   CORE: {
-    msg: `Validation #{method} has no message defined, please check out ${URL.addMethod}`,
-    field: `Field #{selector} was not found, please check out ${URL.fieldName}`,
-    add: `Add method has an invalid parameter, please check out ${URL.addMethod}`,
-    undefined: `Validation method #{method} is not defined, please check out ${URL.addMethod}`,
-    entry: `Invalid entrypoint format #{rules}, please check out ${URL.allSchema}`,
-    paramType: `Invalid parameter in #{validation} of field #{fieldName}, expected #{paramType}, please check out ${URL.paramType}`,
+    msg: `The #{validation} validation has no message set, please check out ${URL.addMethod}`,
+    field: `The #{field} field was not found, please check out ${URL.fieldName}`,
+    add: `The .add method has an invalid parameter, please check out ${URL.addMethod}`,
+    undefined: `The #{validation} validation method is not set, please check out ${URL.addMethod}`,
+    entry: `Invalid #{rule} entry point format, please check out ${URL.allSchema}`,
+    paramType: `The #{fieldName} field has an invalid type parameter in #{validation} validation, expected #{paramType}, please check out ${URL.paramType}`,
   },
 };

@@ -2,15 +2,15 @@ import Rules from '../../../src/rules/Rules';
 import MessageActions from '../../../src/actions/MessageActions';
 import ReplaceActions from '../../../src/actions/ReplaceActions';
 
-import require from '../__validations/require.validate';
-import minlength from '../__validations/minlength.validate';
+import require from '../__validations__/require.validate';
+import minlength from '../__validations__/minlength.validate';
 
 import Octaform from '../../../src';
 
-import dom from '../__helpers/dom';
+import dom from '../__helpers__/dom';
 import { $ } from '../../../src/utils/util-dom';
 
-dom.add('./test/unit/__templates/fields.html');
+dom.add('./test/unit/__templates__/fields.html');
 
 const ExpectedMock = {
   field: 'firstName',

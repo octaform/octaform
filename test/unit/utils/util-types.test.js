@@ -1,9 +1,9 @@
 
-import dom from '../__helpers/dom';
+import dom from '../__helpers__/dom';
 import { $ } from '../../../src/utils/util-dom';
 import types from '../../../src/utils/util-types';
 
-dom.add('./test/unit/__templates/fields.html');
+dom.add('./test/unit/__templates__/fields.html');
 
 describe('Helpers :: Types', () => {
   test('Test: type.is', () => {
