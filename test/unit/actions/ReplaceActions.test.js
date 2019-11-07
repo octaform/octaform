@@ -4,7 +4,7 @@ import MESSAGES from '../../../src/constants/messages';
 describe('Actions :: ReplaceActions', () => {
   test('Test: .message.error(msg = "", ...args) :: Check replace value', () => {
     const replacedText = ReplaceActions.message.error(MESSAGES.CORE.msg, ['email']);
-    const result = 'Validation email has no message defined, please check out https://github.com/octaform/octaform#octaformvalidatoradd';
+    const result = `${MESSAGES.CORE.msg}`.replace('#{validation}', 'email');
     expect(replacedText).toEqual(result);
   });
 

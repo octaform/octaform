@@ -1,8 +1,8 @@
 
-import dom from '../__helpers/dom';
+import dom from '../__helpers__/dom';
 import { $ } from '../../../src/utils/util-dom';
 
-dom.add('./test/unit/__templates/fields.html');
+dom.add('./test/unit/__templates__/fields.html');
 
 describe('Helpers :: DomHelper', () => {
   test('Test: .dom(selector) :: Find element by name', () => {

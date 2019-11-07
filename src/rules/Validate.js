@@ -49,7 +49,7 @@ const Validate = {
           
           const valid = Rules.apply(field, validations);
           if (valid.messages.length) errors.push(valid);
-        } else {
+        } else if (!!fieldRulesMapper) {
           ErrorActions.set('entry', selector);
         }
       });

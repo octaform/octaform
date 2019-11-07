@@ -2,13 +2,13 @@ import Octaform from '../../../src';
 import MESSAGES from '../../../src/constants/messages';
 import ReplaceActions from '../../../src/actions/ReplaceActions';
 
-import dom from '../__helpers/dom';
+import dom from '../__helpers__/dom';
 import { $ } from '../../../src/utils/util-dom';
 
-import require from '../__validations/require.validate';
-import minlength from '../__validations/minlength.validate';
+import require from '../__validations__/require.validate';
+import minlength from '../__validations__/minlength.validate';
 
-dom.add('./test/unit/__templates/fields.html');
+dom.add('./test/unit/__templates__/fields.html');
 
 Octaform.validator.add([
   require,
@@ -147,5 +147,15 @@ describe('Validate :: Index', () => {
         firstName: [],
       });
     }).toThrowError(message);
+  });
+
+  test('Test: Shouldn\'t validate the field', () => {
+    // It covers the scenario when there's the field there isn't any validation for it
+    // it covers the if/else-if/else from Validate.js
+    const validation = Octaform.validate({
+      password: null,
+    });
+
+    expect(validation).toHaveLength(0);
   });
 });

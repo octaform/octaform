@@ -5,7 +5,7 @@ module.exports = {
     name: Package.name,
     version: Package.version,
     description: Package.description,
-    main: Package.main,
+    main: 'index.js',
     repository: Package.repository,
     author: Package.author,
     license: Package.license,
