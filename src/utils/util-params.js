@@ -23,7 +23,7 @@ const shortStringValidation = (string, validations = {}) => {
   );
 };
 
-module.exports = {
+export default {
   spreadList,
   convertType,
   shortStringValidation,

@@ -1,6 +1,6 @@
 import Validate from './rules/Validate';
 
-module.exports = {
+export default {
   validator: Validate.getAll(),
   validate: Validate.apply,
 };
