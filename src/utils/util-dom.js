@@ -1,4 +1,4 @@
-const $ = (selector) => {
+export const $ = (selector) => {
   const elemByName = document.getElementsByName(selector);
   const elemByClass = document.getElementsByClassName(selector);
   const elemById = document.getElementById(selector);
@@ -12,8 +12,4 @@ const $ = (selector) => {
   ) || [];
   
   return Array.from(element);
-};
-
-module.exports = {
-  $,
 };
