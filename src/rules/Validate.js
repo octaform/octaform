@@ -1,5 +1,5 @@
 import Rules from './Rules';
-import dom from '../utils/util-dom';
+import { $ } from '../utils/util-dom';
 import { isString, isObject, isArray } from '../utils/util-types';
 import { ErrorActions, MessageActions, ValidateActions } from '../actions';
 import { stringEntry, objectEntry, arrayEntry } from '../entries';
@@ -20,7 +20,7 @@ const Validate = {
         };
         
         if (!!Object.keys(fieldRulesEntryType).length) {
-          const element = dom.$(selector);
+          const element = $(selector);
           MessageActions.setCustomFieldMsg(selector, fieldRulesEntryType.messages);
 
           if (!element.length) {
