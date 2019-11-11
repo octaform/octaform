@@ -1,13 +1,13 @@
 import PATTERNS from '../constants/patterns';
-import { spreadList } from '../utils/util-params';
+import utilParams from '../utils/util-params';
+import utilTypes from '../utils/util-types';
 import { get } from '../utils/util-object';
-import { isArray, isObject } from '../utils/util-types';
 
 const ReplaceActions = {
   message: {
     error(msg = '', ...args) {
       const params = (msg.match(PATTERNS.MESSAGE.ERROR) || []);
-      const hasMappedKeys = isObject(args[0]);
+      const hasMappedKeys = utilTypes.isObject(args[0]);
 
       return params.reduce((acc, current, index) => {
         let text = '';
@@ -24,8 +24,7 @@ const ReplaceActions = {
     },
     validation(msg = '', params){
       const searchItems = msg.match(PATTERNS.MESSAGE.PARAMS);
-      const spreadParams = spreadList(msg);
-
+      const spreadParams = utilParams.spreadList(msg);
       
       if (spreadParams && spreadParams.length){
         const text = params.join(spreadParams[1] || ', ');
@@ -38,9 +37,9 @@ const ReplaceActions = {
           let map = params || '';
           
           if (map) {
-            if (isArray(params)) {
+            if (utilTypes.isArray(params)) {
               map = params[pureKey];
-            } else if (isObject(params)) {
+            } else if (utilTypes.isObject(params)) {
               map = get(params, pureKey, current);
             }
 
