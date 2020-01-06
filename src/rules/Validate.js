@@ -1,6 +1,6 @@
 import Rules from './Rules';
-import { $ } from '../utils/util-dom';
-import { isString, isObject, isArray } from '../utils/util-types';
+import dom from '../utils/util-dom';
+import utilTypes from '../utils/util-types';
 import { ErrorActions, MessageActions, ValidateActions } from '../actions';
 import { stringEntry, objectEntry, arrayEntry } from '../entries';
 
@@ -15,12 +15,12 @@ const Validate = {
         const fieldRulesMapper = fieldMap[selector];
         
         const fieldRulesEntryType = {
-          ...(isString(fieldRulesMapper) && stringEntry(fieldRulesMapper, validations)),
-          ...(isObject(fieldRulesMapper) && objectEntry(fieldRulesMapper)),
+          ...(utilTypes.isString(fieldRulesMapper) && stringEntry(fieldRulesMapper, validations)),
+          ...(utilTypes.isObject(fieldRulesMapper) && objectEntry(fieldRulesMapper)),
         };
         
         if (!!Object.keys(fieldRulesEntryType).length) {
-          const element = $(selector);
+          const element = dom.$(selector);
           MessageActions.setCustomFieldMsg(selector, fieldRulesEntryType.messages);
 
           if (!element.length) {
@@ -34,8 +34,8 @@ const Validate = {
           );
 
           const fieldRules = (
-            (isArray(fieldRulesEntryType.rules) && arrayEntry(fieldRulesEntryType.rules, validations)) ||
-            (isObject(fieldRulesEntryType.rules) && fieldRulesEntryType.rules) ||
+            (utilTypes.isArray(fieldRulesEntryType.rules) && arrayEntry(fieldRulesEntryType.rules, validations)) ||
+            (utilTypes.isObject(fieldRulesEntryType.rules) && fieldRulesEntryType.rules) ||
             {}
           );
 

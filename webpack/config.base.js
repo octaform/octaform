@@ -1,16 +1,19 @@
-const Package = require('../package.json');
-const path = require('path');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const GenerateJsonPlugin = require('generate-json-webpack-plugin');
+const path = require('path');
+const Package = require('../package.json');
+const npmConfig = require('./config.npm');
 
 module.exports = {
   entry: {
-    index: './src/index.js',
+    octaform: Package.main
   },
   output: {
-    library: Package.alias,
+    library: Package.name,
     libraryTarget: 'umd',
     umdNamedDefine: true,
-    filename: '[name].js',
+    filename: '[name].min.js',
     path: path.resolve('./dist'),
   },
   module: {
@@ -21,8 +24,14 @@ module.exports = {
     }],
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['index'],
-    }),
+    new CopyWebpackPlugin([
+      './LICENSE',
+      './README.md',
+    ]),
+    new GenerateJsonPlugin('package.json', npmConfig.package),
+    new webpack.DefinePlugin({
+      REPO_URL: JSON.stringify(Package.repository.url),
+      VERSION: JSON.stringify(Package.version),
+    })
   ],
 };
