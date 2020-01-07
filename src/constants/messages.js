@@ -1,10 +1,8 @@
-import Package from '../../package.json';
-
 const URL = {
-  addMethod: `${Package.repository.url}#octaformvalidatoradd`,
-  allSchema: `${Package.repository.url}#octaformvalidateschema`,
-  paramType: `${Package.repository.url}#octaformvalidatoradd`,
-  fieldName: `${Package.repository.url}#field-name-required`,
+  addMethod: `${REPO_URL}#octaformvalidatoradd`,
+  allSchema: `${REPO_URL}#octaformvalidateschema`,
+  paramType: `${REPO_URL}#octaformvalidatoradd`,
+  fieldName: `${REPO_URL}#field-name-required`,
 };
 
 export default {

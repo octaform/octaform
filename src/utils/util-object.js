@@ -6,8 +6,12 @@ const stringToPath = (path) => {
   return path.split('.');
 };
 
-export const get = (source, path, defaultArgument) => {
+const get = (source, path, defaultArgument) => {
   return stringToPath(path).reduce((nestedObject, key) => {
     return nestedObject && key in nestedObject ? nestedObject[key] : void 0;
   }, source) || defaultArgument;
 };
+
+export default {
+  get
+}

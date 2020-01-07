@@ -1,47 +1,47 @@
 
 import dom from '../__helpers__/dom';
-import { $ } from '../../../src/utils/util-dom';
-import types from '../../../src/utils/util-types';
+import utilDom from '../../../src/utils/util-dom';
+import utilTypes from '../../../src/utils/util-types';
 
 dom.add('./test/unit/__templates__/fields.html');
 
 describe('Helpers :: Types', () => {
   test('Test: type.is', () => {
-    expect(types.is('string')).toEqual('String');
-    expect(types.is({})).toEqual('Object');
-    expect(types.is(123)).toEqual('Number');
-    expect(types.is(() => {})).toEqual('Function');
-    expect(types.is(true)).toEqual('Boolean');
-    expect(types.is([])).toEqual('Array');
-    expect(types.is($('email')[0])).toEqual('HTMLInputElement');
+    expect(utilTypes.is('string')).toEqual('String');
+    expect(utilTypes.is({})).toEqual('Object');
+    expect(utilTypes.is(123)).toEqual('Number');
+    expect(utilTypes.is(() => {})).toEqual('Function');
+    expect(utilTypes.is(true)).toEqual('Boolean');
+    expect(utilTypes.is([])).toEqual('Array');
+    expect(utilTypes.is(utilDom.$('email')[0])).toEqual('HTMLInputElement');
   });
 
   test('Test: type.isString', () => {
-    expect(types.isString('string')).toBe(true);
+    expect(utilTypes.isString('string')).toBe(true);
   });
 
   test('Test: type.isObject', () => {
-    expect(types.isObject({})).toBe(true);
+    expect(utilTypes.isObject({})).toBe(true);
   });
 
   test('Test: type.isNumber', () => {
-    expect(types.isNumber(123)).toBe(true);
+    expect(utilTypes.isNumber(123)).toBe(true);
   });
 
   test('Test: type.isFunction', () => {
-    expect(types.isFunction(() => {})).toBe(true);
+    expect(utilTypes.isFunction(() => {})).toBe(true);
   });
 
   test('Test: type.isBoolean', () => {
-    expect(types.isBoolean(true)).toBe(true);
+    expect(utilTypes.isBoolean(true)).toBe(true);
   });
 
   test('Test: type.isArray', () => {
-    expect(types.isArray([])).toBe(true);
+    expect(utilTypes.isArray([])).toBe(true);
   });
 
   test('Test: type.isElement', () => {
-    const field = $('email');
-    expect(types.isElement(field[0])).toBe(true);
+    const field = utilDom.$('email');
+    expect(utilTypes.isElement(field[0])).toBe(true);
   });
 });

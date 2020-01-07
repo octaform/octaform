@@ -1,9 +1,9 @@
-import Octaform from '../../../src';
+import Octaform from '../../../src/octaform';
 import MESSAGES from '../../../src/constants/messages';
 import ReplaceActions from '../../../src/actions/ReplaceActions';
 
 import dom from '../__helpers__/dom';
-import { $ } from '../../../src/utils/util-dom';
+import utilDom from '../../../src/utils/util-dom';
 
 import require from '../__validations__/require.validate';
 import minlength from '../__validations__/minlength.validate';
@@ -36,7 +36,7 @@ const messageSchema = (field, messages, rules) => {
 };
 
 describe('Validate :: Index', () => {
-  const field = $('firstName');
+  const field = utilDom.$('firstName');
   
   test('Test: Shouldn\'t have any validation', () => {
     const validation = Octaform.validate();

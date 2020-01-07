@@ -1,4 +1,4 @@
-export const $ = (selector) => {
+const $ = (selector) => {
   const elemByName = document.getElementsByName(selector);
   const elemByClass = document.getElementsByClassName(selector);
   const elemById = document.getElementById(selector);
@@ -13,3 +13,7 @@ export const $ = (selector) => {
   
   return Array.from(element);
 };
+
+export default {
+  $
+}

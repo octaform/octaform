@@ -1,5 +1,5 @@
 import { ReplaceActions, ErrorActions } from '../actions';
-import { is } from '../utils/util-types';
+import utilTypes from '../utils/util-types';
 
 const Rules = {
   apply: (field = {}, validations = {}) => {
@@ -16,7 +16,7 @@ const Rules = {
           const validate = validations[key];
 
           if (validate) {
-            if (validate.paramType && (is(params) !== validate.paramType.name)) {
+            if (validate.paramType && (utilTypes.is(params) !== validate.paramType.name)) {
               ErrorActions.set('paramType', {
                 validation: key, 
                 paramType: validate.paramType.name, 

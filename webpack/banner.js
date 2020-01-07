@@ -1,6 +1,7 @@
+const webpack = require('webpack');
 const Package = require('../package.json');
 
-module.exports = () => {
+const banner = () => {
   const year = () => {
     const createdAt = 2018;
     const currentYear = new Date().getFullYear();
@@ -11,12 +12,19 @@ module.exports = () => {
     return `${createdAt}-present`;
   };
 
-  return (`
+  return new webpack.BannerPlugin({
+    banner: (`
 /**
-  * @license ${Package.alias} v${Package.version}
-  * ${Package.repository.url}
-  * Copyright (c) ${year()}, ${Package.author}
-  * Released under the ${Package.license} License.
-*/
-`);
+ * @license ${Package.name} v${Package.version}
+ * ${Package.repository.url}
+ * Copyright (c) ${year()}, ${Package.author}
+ * Released under the ${Package.license} License.
+ * For license information please see LICENSE
+ */
+    `),
+    raw: true,
+    entryOnly: true
+  });
 };
+
+module.exports = banner;

@@ -165,6 +165,4 @@ Check out the [demo page](https://octaform.github.io) and see the validations wo
 [Check out releases](https://github.com/octaform/octaform/releases)
 
 ## License
-[The MIT License (MIT)](/LICENSE)
-
-Copyright (c) 2018-2019 Christian Fortes
+[Octaform is MIT licensed](/LICENSE)

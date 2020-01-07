@@ -1,41 +1,43 @@
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const npmConfig = require('./config.npm');
-const GenerateJsonPlugin = require('generate-json-webpack-plugin');
+const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
 const webpackBase = require('./config.base');
 const banner = require('./banner');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = merge(webpackBase, {
   plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new webpack.HashedModuleIdsPlugin(),
+    new UnminifiedWebpackPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       test: /\.js$/,
       exclude: /node_modules/,
       sourceMap: false,
       minimize: true,
       extractComments: true,
-      ecma: 5,
-      warnings: false,
+      mangle: false,
       compress: {
+        booleans: true,
+        warnings: false,
+        screw_ie8: true,
+        conditionals: true,
+        unused: true,
+        comparisons: true,
+        sequences: true,
+        dead_code: true,
+        evaluate: true,
+        if_return: true,
+        join_vars: true,
         drop_console: true,
         drop_debugger: true,
         toplevel: true,
         pure_getters: true,
-        warnings: false,
       },
-      mangle: false,
-      ie8: true,
-      safari10: true,
-      toplevel: true,
+      output: {
+        comments: false
+      }
     }),
-    new webpack.BannerPlugin({
-      banner: banner(),
-      raw: true,
-    }),
-    new GenerateJsonPlugin('package.json', npmConfig.package),
-    new CopyWebpackPlugin([
-      './LICENSE',
-      './README.md',
-    ]),
+    banner()
   ],
 });
