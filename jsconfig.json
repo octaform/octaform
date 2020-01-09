@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src"],
+      "@actions/*": ["src/actions/*"],
+      "@constants/*": ["src/constants/*"],
+      "@entries/*": ["src/entries/*"],
+      "@models/*": ["src/models/*"],
+      "@rules/*": ["src/rules/*"],
+      "@states/*": ["src/states/*"],
+      "@utils/*": ["src/utils/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

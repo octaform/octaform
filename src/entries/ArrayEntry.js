@@ -1,4 +1,4 @@
-import utilParams from '../utils/util-params';
+import utilParams from '@utils/util-params';
 
 // extractRulesFromArray
 const arrayEntry = (field = [], validations = {}) => {

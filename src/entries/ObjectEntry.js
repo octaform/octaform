@@ -1,7 +1,7 @@
-import rule from '../models/rule';
+import rule from '@models/rule';
 
 // extractRulesFromString
-const ObjectEntry = (object) => {
+const ObjectEntry = object => {
   return rule.get(object);
 };
 

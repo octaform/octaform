@@ -1,5 +1,5 @@
 export default {
-  get({ rules = {}, messages = {}, value }){
+  get({ rules = {}, messages = {}, value }) {
     return {
       ...(rules && { rules }),
       ...(messages && { messages }),

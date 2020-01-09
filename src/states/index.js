@@ -1,4 +1,4 @@
-import MESSAGES from '../constants/messages';
+import MESSAGES from '@constants/messages'
 
 export default {
   validations: {},
@@ -7,4 +7,4 @@ export default {
     core: MESSAGES.CORE,
     validator: {},
   },
-};
+}

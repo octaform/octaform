@@ -1,12 +1,12 @@
-import PATTERNS from '../constants/patterns';
-import utilParams from '../utils/util-params';
-import utilTypes from '../utils/util-types';
-import utilObject from '../utils/util-object';
+import PATTERNS from '@constants/patterns';
+import utilParams from '@utils/util-params';
+import utilTypes from '@utils/util-types';
+import utilObject from '@utils/util-object';
 
 const ReplaceActions = {
   message: {
     error(msg = '', ...args) {
-      const params = (msg.match(PATTERNS.MESSAGE.ERROR) || []);
+      const params = msg.match(PATTERNS.MESSAGE.ERROR) || [];
       const hasMappedKeys = utilTypes.isObject(args[0]);
 
       return params.reduce((acc, current, index) => {
@@ -18,25 +18,24 @@ const ReplaceActions = {
         } else {
           text = args[index];
         }
-        
+
         return acc.replace(current, text);
       }, msg);
     },
-    validation(msg = '', params){
+    validation(msg = '', params) {
       const searchItems = msg.match(PATTERNS.MESSAGE.PARAMS);
       const spreadParams = utilParams.spreadList(msg);
 
-      
-      if (spreadParams && spreadParams.length){
+      if (spreadParams && spreadParams.length) {
         const text = params.join(spreadParams[1] || ', ');
         msg = msg.replace(spreadParams[0], text);
       }
-      
+
       if (searchItems) {
         return searchItems.reduce((acc, current) => {
           const pureKey = current.replace(PATTERNS.MESSAGE.BRACES, '');
           let map = params || '';
-          
+
           if (map) {
             if (utilTypes.isArray(params)) {
               map = params[pureKey];
@@ -46,7 +45,7 @@ const ReplaceActions = {
 
             return acc.replace(current, map);
           }
-          
+
           return acc;
         }, msg);
       }
