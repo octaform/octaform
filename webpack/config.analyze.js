@@ -1,9 +1,8 @@
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
-const merge = require('webpack-merge');
 const webpackBase = require('./config.base');
 
-module.exports = merge(webpackBase, {
+module.exports = Object.assign({}, webpackBase, {
   devtool: 'inline-source-map',
   plugins: [new BundleAnalyzerPlugin()],
 });

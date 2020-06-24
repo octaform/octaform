@@ -5,23 +5,22 @@
   <div align="center">Octaform - Validate</div>
 </h1>
 
-Octaform helps developers validate form in an easy way being completely agnostic to the framework that you're using
+Octaform help developers to validate all forms in a simple way being completely agnostic to the framework that you're using
 
 ## Getting Started
 
-Install using `yarn`:
+Installation
 ```
 yarn add octaform
-```
 
-Or via `npm`:
-```
+// or
+
 npm install octaform --save
 ```
 
 ## Octaform API
 
-Let's get started import the Octaform, add the validations and create the validation schema
+Let's get started importing the Octaform core and add the validations that the project will use, and the last step will be you write your schema that is the map of all fields that will be validated
 ```js
 import Octaform from 'octaform';
 
@@ -37,10 +36,10 @@ Octaform.validate({
 ```
 
 ## `Octaform.validator`
-Validator returns an object that able you to access all validations previously defined in the `.add` method
+Validator returns an object where you can access all validations previously defined in the `.add` method
 
 ## `Octaform.validator.add()`
-The `.add` is used to define the validation that is used by schema. This method is wait as parameter an `Array[Object]` or `Object`. Follow the example below:
+The `.add` is used to define the validation that is used by the schema. This method awaits a parameter as `Array[Object]` or `Object`. Follow the example below:
 
 Create a validation file `(e.g. email.validation.js)`:
 
@@ -69,12 +68,13 @@ export default {
 ```
 
 ## `Octaform.validate(Schema)`
-The method `validate` is used to call the validations based in a schema. Check out an schema example below:
+The method `validate` is used to call the validation based in a schema. Check out an schema example:
 
 ```js
 const Schema = {
   // Field name is defined on the name attribute of input (Required)
   field_name: {
+    ref: HTMLElement, // (Optional)
     value: String, // (Optional)
     rules: Object || Array // (Required)
     messages: Object // (Required)
@@ -84,26 +84,36 @@ const Schema = {
 ```
 
 ### Field name: `(Required)`
-The field name is used to search the element on the DOM, you should define the same name specified in the attribute `name`. The key `field_name` should be an `Object || String` as entrypoint
+The field name is a required property it is used to get the input details from the HTML, you must define a `name` attribute on your HTML field or if you are using other platform like react native you can define an attribute called `ref` instead and pass directly the html element. When using `name` attribute you are able to set you rules as an `Object` or a single validation using `String` instead.
 
 ```js
 const Schema = {
-  // Define your value/rules/messages into field_name object
-  field_name: {}
+  field_name: {
+    ref: HTMLElement // Optional
+    value: "field value" // Optional,
+    rules: {} // Required
+    messages: {} // optional
+  }
+
+  // OR
+
+  field_name: "required"
 };
 ```
 
-`OR` 
-
-```js
-const Schema = {
-  field_name: 'required'
-};
-```
-Note that defining a string, you are able to use only a single validation without any options, it could be helpful to save some lines of code for a single validation
-
-> Don't forget to add the attribute name on your input to recognize the DOM element and apply the validation: 
+> (Web Only) - Set the attribute name to recognize the DOM element and apply the validation:
 > e.g. `<input type="text" name="field_name" />`
+
+### Ref: `(Optional)`
+Ref is used to get the input details through the HTML, it is used when you are validating in another platform like react native when the DOM is not present. The input will be your HTML element.
+
+```js
+const Schema = {
+  firstName: {
+    ref: HTMLElement
+  }
+};
+```
 
 ### Value: `(Optional)`
 You can add a key to define your custom value and validate without search in the DOM,
@@ -160,9 +170,6 @@ Follow this repository and use our preset validation [https://github.com/octafor
 
 ## Demo
 Check out the [demo page](https://octaform.github.io) and see the validations working and have fun!
-
-## Changelog
-[Check out releases](https://github.com/octaform/octaform/releases)
 
 ## License
 [Octaform is MIT licensed](/LICENSE)

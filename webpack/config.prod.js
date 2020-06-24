@@ -1,10 +1,9 @@
 const webpack = require('webpack');
-const merge = require('webpack-merge');
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
 const webpackBase = require('./config.base');
 const banner = require('./banner');
 
-module.exports = merge(webpackBase, {
+module.exports = Object.assign({}, webpackBase, {
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),

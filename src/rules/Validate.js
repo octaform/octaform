@@ -21,7 +21,12 @@ const Validate = {
       };
 
       if (!!Object.keys(fieldRulesEntryType).length) {
-        const element = dom.$(selector);
+        const element = (
+          fieldRulesEntryType.ref 
+            ? [fieldRulesEntryType.ref] 
+            : dom.$(selector)
+        );
+        
         MessageActions.setCustomFieldMsg(
           selector,
           fieldRulesEntryType.messages

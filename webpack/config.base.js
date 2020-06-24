@@ -6,7 +6,6 @@ const Package = require('../package.json');
 const npmConfig = require('./config.npm');
 
 module.exports = {
-  watch: true,
   entry: {
     octaform: Package.main,
   },
