@@ -27,7 +27,7 @@
     "test:watch": "jest -c ./scripts/jest/jest.config.json --colors --watchAll",
     "clean": "rimraf dist",
     "coveralls": "coveralls < ./test/coverage/lcov.info",
-    "deploy": "yarn install && yarn test && yarn build && yarn coveralls && npm publish dist/"
+    "deploy": "yarn install && yarn test && yarn build && npm publish dist/"
   },
   "repository": {
     "type": "git",
