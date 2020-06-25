@@ -5,12 +5,12 @@ import ReplaceActions from '../../../src/actions/ReplaceActions';
 import require from '../__validations__/require.validate';
 import minlength from '../__validations__/minlength.validate';
 
-import Octaform from '../../../src';
+import Octaform from '../../../src/octaform';
 
 import dom from '../__helpers__/dom';
-import { $ } from '../../../src/utils/util-dom';
+import utilDom from '../../../src/utils/util-dom';
 
-dom.add('./test/unit/__templates__/fields.html');
+dom.add('./test/specs/__templates__/fields.html');
 
 const ExpectedMock = {
   field: 'firstName',
@@ -24,7 +24,7 @@ const MockToApply = {
   },
   messages: MessageActions.getAll(),
   selector: 'firstName',
-  element: $('firstName'),
+  element: utilDom.$('firstName'),
   value: '',
 };
 

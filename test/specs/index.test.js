@@ -1,4 +1,4 @@
-import Octaform from '../../src';
+import Octaform from '../../src/octaform';
 
 describe('Index :: Octaform', () => {
   test('Test: Validator Instance', () => {

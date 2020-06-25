@@ -44,5 +44,12 @@
     "window": true,
     "console": true,
     "_": true
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack/config.base.js"
+      }
+    }
   }
 }

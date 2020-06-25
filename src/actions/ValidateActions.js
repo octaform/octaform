@@ -1,7 +1,7 @@
 import ErrorActions from './ErrorActions';
 import MessageActions from './MessageActions';
 import State from '../states';
-import { isArray, isObject, isString, isFunction } from '../utils/util-types';
+import utilTypes from '../utils/util-types';
 
 const ValidateActions = {
   getAll() {
@@ -11,19 +11,19 @@ const ValidateActions = {
     State.validations[name] = fn;
   },
   add(validationList) {
-    if (isArray(validationList) || isObject(validationList)) {
-      const validations = (
-        isObject(validationList) 
-          ? [validationList] 
-          : validationList
-      );
+    if (
+      utilTypes.isArray(validationList) ||
+      utilTypes.isObject(validationList)
+    ) {
+      const validations = utilTypes.isObject(validationList)
+        ? [validationList]
+        : validationList;
 
       validations.forEach(({ name, message, paramType, fn }) => {
-        const hasParams = (
-          isString(name) 
-            && isFunction(fn) 
-            && isString(message)
-        );
+        const hasParams =
+          utilTypes.isString(name) &&
+          utilTypes.isFunction(fn) &&
+          utilTypes.isString(message);
 
         if (hasParams && paramType) {
           fn.paramType = paramType;

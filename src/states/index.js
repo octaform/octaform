@@ -7,4 +7,4 @@ export default {
     core: MESSAGES.CORE,
     validator: {},
   },
-};
+}

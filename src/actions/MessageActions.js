@@ -10,7 +10,7 @@ const MessageActions = {
   setCustomFieldMsg(field, userMessages) {
     State.messages.fields = Object.assign(
       State.messages.fields,
-      (!!Object.keys(userMessages).length && { [field]: userMessages }),
+      !!Object.keys(userMessages).length && { [field]: userMessages }
     );
   },
 };
