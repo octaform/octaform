@@ -1,4 +1,4 @@
-import Validate from '@rules/Validate';
+import Validate from './rules/Validate';
 
 export const validator = Validate.getAll();
 export const validate = Validate.apply;

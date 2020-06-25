@@ -1,7 +1,7 @@
-import PATTERNS from '@constants/patterns';
-import utilParams from '@utils/util-params';
-import utilTypes from '@utils/util-types';
-import utilObject from '@utils/util-object';
+import PATTERNS from '../constants/patterns';
+import utilParams from '../utils/util-params';
+import utilTypes from '../utils/util-types';
+import utilObject from '../utils/util-object';
 
 const ReplaceActions = {
   message: {

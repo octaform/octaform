@@ -1,0 +1,24 @@
+{
+  "verbose": true,
+  "rootDir": "../../",
+  "testURL": "http://localhost:3000",
+  "coverageDirectory": "test/coverage/",
+  "setupFiles": [],
+  "testMatch": [
+    "<rootDir>/test/specs/**/*.test.js"
+  ],
+  "coverageReporters": [
+    "lcov"
+  ],
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "src/**/*.js",
+    "!**/node_modules/**"
+  ],
+  "testPathIgnorePatterns": ["__mocks__", "__snapshots__"],
+  "modulePathIgnorePatterns": [ "<rootDir>/dist" ],
+  "globals": {
+    "REPO_URL": "http://localhost:3000",
+    "VERSION": "1.0.0"
+  }
+}

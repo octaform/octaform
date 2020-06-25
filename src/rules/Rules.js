@@ -1,5 +1,5 @@
-import { ReplaceActions, ErrorActions } from '@actions';
-import utilTypes from '@utils/util-types';
+import { ReplaceActions, ErrorActions } from '../actions';
+import utilTypes from '../utils/util-types';
 
 const Rules = {
   apply: (field = {}, validations = {}) => {

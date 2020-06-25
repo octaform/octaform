@@ -1,8 +1,8 @@
 <h1 align="center">
   <div align="center">
-    <img src="https://avatars2.githubusercontent.com/u/37938941?s=400&u=b7a61cbf6b9686cb78d50258213b256159dbb7af&v=4" height="200" width="200"/>
+    <img src="./.github/octaform.png" width="191" />
   </div>
-  <div align="center">Octaform - Validate</div>
+  <div align="center">Octaform Validate</div>
 </h1>
 
 Octaform help developers to validate all forms in a simple way being completely agnostic to the framework that you're using

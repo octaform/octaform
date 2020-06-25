@@ -1,8 +1,8 @@
 import Rules from './Rules';
-import dom from '@utils/util-dom';
-import utilTypes from '@utils/util-types';
-import { ErrorActions, MessageActions, ValidateActions } from '@actions';
-import { stringEntry, objectEntry, arrayEntry } from '@entries';
+import dom from '../utils/util-dom';
+import utilTypes from '../utils/util-types';
+import { ErrorActions, MessageActions, ValidateActions } from '../actions';
+import { stringEntry, objectEntry, arrayEntry } from '../entries';
 
 const Validate = {
   getAll: ValidateActions.getAll,

@@ -8,7 +8,7 @@ import utilDom from '../../../src/utils/util-dom';
 import require from '../__validations__/require.validate';
 import minlength from '../__validations__/minlength.validate';
 
-dom.add('./test/unit/__templates__/fields.html');
+dom.add('./test/specs/__templates__/fields.html');
 
 Octaform.validator.add([
   require,
@@ -126,6 +126,23 @@ describe('Validate :: Index', () => {
     expect(validation).toHaveLength(0);
   });
 
+  test('Test: Should validate a field when ', () => {
+    const field = utilDom.$('firstName');
+    
+    field[0].value = "John Doe";
+
+    const validation = Octaform.validate({
+      firstName: {
+        ref: field[0],
+        rules: {
+          required: true
+        },
+      },
+    });
+
+    expect(validation).toHaveLength(0);
+  });
+
   test('Test: Shouldn\'t validate firstName with empty rules', () => {
     const validation = Octaform.validate({ firstName: {} });
     expect(validation).toHaveLength(0);
@@ -149,9 +166,7 @@ describe('Validate :: Index', () => {
     }).toThrowError(message);
   });
 
-  test('Test: Shouldn\'t validate the field', () => {
-    // It covers the scenario when there's the field there isn't any validation for it
-    // it covers the if/else-if/else from Validate.js
+  test('Test: Should not validate when have not a validation for the field', () => {
     const validation = Octaform.validate({
       password: null,
     });

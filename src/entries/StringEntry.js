@@ -1,5 +1,5 @@
-import utilParams from '@utils/util-params';
-import rule from '@models/rule';
+import utilParams from '../utils/util-params';
+import rule from '../models/rule';
 
 // extractRulesFromString
 const stringEntry = (string, validations) => {

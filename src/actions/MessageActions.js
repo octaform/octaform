@@ -1,4 +1,4 @@
-import State from '@states';
+import State from '../states';
 
 const MessageActions = {
   getAll() {

@@ -1,7 +1,7 @@
 import ErrorActions from './ErrorActions';
 import MessageActions from './MessageActions';
-import State from '@states';
-import utilTypes from '@utils/util-types';
+import State from '../states';
+import utilTypes from '../utils/util-types';
 
 const ValidateActions = {
   getAll() {

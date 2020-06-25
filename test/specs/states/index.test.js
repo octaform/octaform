@@ -1,4 +1,4 @@
-import States from '../../../src/states/index';
+import States from "../../../src/states/index";
 
 describe('States :: Index', () => {
   test('Test: State should have an pre-defined schema', () => {

@@ -3,7 +3,7 @@ import dom from '../__helpers__/dom';
 import utilDom from '../../../src/utils/util-dom';
 import utilTypes from '../../../src/utils/util-types';
 
-dom.add('./test/unit/__templates__/fields.html');
+dom.add('./test/specs/__templates__/fields.html');
 
 describe('Helpers :: Types', () => {
   test('Test: type.is', () => {
