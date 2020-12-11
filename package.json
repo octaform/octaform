@@ -1,6 +1,6 @@
 {
-  "name": "octaform",
-  "version": "1.6.0",
+  "name": "@octaform/core",
+  "version": "2.0.0",
   "description": "Octaform is designed to help developers easily validate forms, being completely agnostic to the framework.",
   "main": "./src/octaform.js",
   "homepage": "https://github.com/octaform/octaform#readme",
@@ -39,7 +39,7 @@
     "@babel/core": "^7.10.3",
     "@babel/node": "^7.10.3",
     "@babel/plugin-proposal-class-properties": "^7.10.1",
-    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-env": "^7.12.7",
     "@babel/register": "^7.10.3",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.1.0",

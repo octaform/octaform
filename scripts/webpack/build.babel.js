@@ -6,13 +6,14 @@ import TerserPlugin from "terser-webpack-plugin";
 import path from "path";
 import banner from "./banner";
 import Pkg from "../../package.json";
-
-const capitalize = (str) => `${str.charAt(0).toUpperCase()}${str.slice(1)}`;
+import string from "../../release-1.0/utils/util-string";
 
 const config = {
   mode: "production",
   entry: {
-    octaform: Pkg.main,
+    // octaform: Pkg.main,
+    'octaform-1.0': './release-1.0/octaform.js',
+    'octaform-2.0': './src/octaform.js',
   },
   resolve: {
     modules: ['./node_modules'],
@@ -21,7 +22,7 @@ const config = {
   output: {
     filename: '[name].js',
     path: path.resolve('./dist'),
-    library: capitalize(Pkg.name),
+    library: string.capitalize(Pkg.name),
     libraryTarget: 'umd',
     libraryExport: "default",
     umdNamedDefine: true,
